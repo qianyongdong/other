@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>九宫格抽奖</title>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <ul class="nav-list">
+                <li>基础版</li>
+                <!-- <li>进阶版</li>
+                <li>进入后台</li> -->
+            </ul>
+        </nav>
+    </header>
+    <main class="content container">
+        <section class="left-wrap">
+            <h1 class="h1-title">幸运抽奖</h1>
+            <div class="left-wrap-header">
+                <p>当前矿石数：<span class="coins"> &infin;</span></p>
+                <div class="report">
+                </div>
+                <button>已签到</button>
+            </div>
+            <div class="box">
+                <div class="box-border box-border-top">
+                    <div class="dot"></div>
+                    <div class="dot-transform"></div>
+                    <div class="dot-center"></div>
+                    <div class="dot-transform"></div>
+                </div>
+                <div class="box-border box-border-down">
+                    <div class="dot"></div>
+                    <div class="dot-transform"></div>
+                    <div class="dot-center"></div>
+                    <div class="dot-transform"></div>
+                </div>
+                <div class="box-border box-border-left">
+                    <div class="dot"></div>
+                    <div class="dot-transform"></div>
+                    <div class="dot-center"></div>
+                    <div class="dot-transform"></div>
+                </div>
+                <div class="box-border box-border-right">
+                    <div class="dot"></div>
+                    <div class="dot-transform"></div>
+                    <div class="dot-center"></div>
+                    <div class="dot-transform"></div>
+                </div>
+                <div class="box-content">
+
+                </div>
+            </div>
+            <section id="leftLayer">
+
+            </section>
+        </section>
+        <section class="right-wrap">
+            <h1 class="h1-title">抽奖设置</h1>
+            <div class="cs">
+                <div>起始矿石 ： <input type="text" id="qs" value="1000"></div>
+                <div>每次消耗 ： <input type="text" id="ex" value="20"></div>
+            </div>
+            <h2 class="h1-title">设置奖品</h2>
+            <div class="list">
+
+            </div>
+            <div class="ral">
+                <div class="right-addLayer">
+                    <div class="int">1</div>
+                    <div><span>类型 : &nbsp;</span>
+                        <select name="" id="">
+                            <option value="0" selected>无</option>
+                            <option value="1">矿石</option>
+                            <option value="2">其他</option>
+                        </select>
+                    </div>
+                    <div id='gl'>
+                        <span>概率(%)</span>
+                        <input type="number" min="0" max="100" value="0">
+                    </div>
+                    <div id='sl'>
+                        <span>数量 : &nbsp;</span>
+                        <input type="number">
+                    </div>
+                    <div id='zsl'>
+                        <span>总份 : &nbsp;</span>
+                        <input type="number">
+                    </div>
+                    <div id='mc'>
+                        <span>名称 : &nbsp;</span>
+                        <input type="text" name="" id="">
+                    </div>
+                    <div id='tp'>
+                        <span>图片 : &nbsp;</span>
+                        <input type="file" name="file" accept="image/*">
+                    </div>
+                    <div class="button">
+                        <input type="button" value="取消" onclick="hide()">
+                        <input type="button" value="修改" onclick="save()">
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="container">
+        <p>Copyright © 2021 by : qianyongdong</p>
+    </footer>
+    <script src="./util.js"></script>
+    <script src="./index.js"></script>
+    <script>
+        lottery.init({
+            el: '.box-content',//绑定抽奖元素
+            prizeInfo: //奖品信息，最多8个，多省少补{}，{}未中奖。
+                list,
+            coinsEl: '.coins',//绑定矿石元素
+            coins: 1000, //初始矿石数
+            expend: 20,//每次抽奖花费矿石数
+            winListEl: '.report',//绑定中奖名单元素
+            winList: [],//中奖名单
+            layerEl: '#leftLayer'
+
+        })
+    </script>
+</body>
+
+</html>

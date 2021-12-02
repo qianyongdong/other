@@ -1,0 +1,63 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-06-24 17:03:11
+ * @LastEditTime: 2021-06-25 11:50:14
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \yodn\vue3\component\demo8.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.1.1/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                showComponent:'dajiao'
+            }
+        },
+        methods:{
+            handleClick(){
+                this.showComponent=this.showComponent==='dajiao'?'Liuying':'dajiao'
+            }
+        },
+        template:`
+         <Dajiao v-show='showComponent==="dajiao"' />
+         <Liuying v-show='showComponent==="Liuying"' />
+         <div><button @click='handleClick'>切换</button></div>
+        ----------------------------------------<br/>
+         <keep-alive>
+         <component :is="showComponent" />
+         </keep-alive>
+        `
+    })
+    
+    app.component('Dajiao',{
+        template:`
+        <div>
+        <img src='https://newimg.jspang.com/xiedajiao01.jpg' /> 
+        <input type='text' />
+        </div>
+        `
+    })
+
+    app.component('Liuying',{
+        template:`
+        <div>
+        <img src='https://newimg.jspang.com/liuying01.jpg' />
+        </div>
+        `
+    })
+
+    const vm=app.mount("#app")
+</script>
+</html>

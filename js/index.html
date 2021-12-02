@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1362546_4gl5w4cegvt.css">
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+<style>
+    ul,
+    li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .header>section {
+        height: 60px;
+        line-height: 60px;
+        border-bottom: 1px solid rgba(255, 255, 255, .5);
+    }
+
+    .header>section:first-child>img {
+        height: 50px;
+    }
+
+    .header>section:nth-child(2)>ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header>section:nth-child(2)>ul>li>a {
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .header>section:nth-child(3) {
+        text-align: center;
+    }
+
+    .header>section:nth-child(3)>a {
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .header>section:last-child {
+        text-align: right;
+        color: #fff;
+    }
+
+    .banner {
+        position: relative;
+        top: -60px;
+        left: 0;
+        background: url("./img/java01.jpg") center no-repeat;
+        height: 560px;
+        width: 100%;
+        z-index: -1;
+    }
+
+    .content>section:first-child {
+        padding-bottom: 10px;
+    }
+
+    .content>section:first-child>section:first-child {
+        background: url("./img/javatit7.png") no-repeat center;
+        text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    .content>section:first-child>section:last-child {
+        font-size: 2ex;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .content>section:nth-child(2)>section {
+        padding-bottom: 20px;
+    }
+
+    .content>section:nth-child(2)>section>section {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+
+    .content>section:nth-child(2)>section>section>img {
+        width: 100%;
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    .content>section:nth-child(2)>section>section>section>h6 {
+        background: #234391;
+        color: #fff;
+        font-size: 2em;
+        padding: 10px 20px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .content>section:nth-child(2)>section>section>section>ul {
+        padding-left: 40px;
+    }
+
+    .content>section:nth-child(2)>section>section>section>ul>li {
+        font-size: 18px;
+        color: #8492a6;
+        padding: 10px 40px 0;
+        background: url("https://cdn2.lmonkey.com/site/img/theme/light/teachers_ico.png") no-repeat left center;
+    }
+
+    .content>section:nth-child(2)>section>section>section:last-child {
+        color: #8492a6;
+        text-indent: 2em;
+        margin: 0 auto;
+        padding: 30px 20px 10px;
+    }
+    .content>section:last-child{
+        margin:10px 0 40px ;
+        text-align: center;
+    }
+    .content>section:last-child>a{
+        padding: 15px 40px;
+        background-color: #234391;
+        font-weight: bold;
+        font-size: 16px;
+        color: #fff;
+        border-radius: 10px ;
+        letter-spacing: 5px;
+    }
+    .content>section:last-child::first-letter{
+         font-size: 20px;
+    }
+    footer{
+        border-top: 1px solid #f4f4f4;
+        padding: 20px 0;
+    }
+    /* footer>section:first-child{
+        margin-bottom: 40px;
+    } */
+    .bottom{
+        text-align: center;
+    }
+    footer>section:first-child>section:first-child{
+        text-align: center;
+    }
+    footer>section:first-child>section:first-child>section{
+        padding: 20px 0;
+        text-indent: 2em;
+        font-size:14px;
+        color: #8492a6;
+    }
+    footer>section:first-child>section:first-child>img{
+        width: 30%;
+
+    }
+    footer>section:first-child>section:first-child>section{
+        text-align: left;
+    }
+    footer>section:first-child>section:nth-child(2)>section{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 100px;
+    }
+    footer>section:first-child>section:nth-child(2)>section>ul{
+        text-align: center;
+    }
+    footer>section:first-child>section:nth-child(2)>section>ul>li:first-child{
+        font-size: 18px;
+        font-weight: bold;
+        color: #5e5e5e;
+        border-bottom: 1px solid blue;
+        padding-bottom:5px ;
+        margin-bottom: 10px;
+    }
+    footer>section:first-child>section:nth-child(2)>section>ul>li:nth-child(n+2){
+        font-size: 14px;
+        color: #337ab7;
+        padding: 5px 0;
+    }
+    footer>section:first-child>section:last-child{
+        display: flex;
+        margin: 100px 0 0;
+        flex-direction: column;
+        align-items: center;
+    }
+    footer>section:first-child>section:last-child>img{
+        width: 100px;
+    }
+
+</style>
+
+<body>
+    <header>
+        <section class="container">
+            <section class="row header">
+                <section class="col-sm-10 col-xs-10 col-md-2 col-lg-2">
+                    <img src="./img/6047ecf273ac4bb3902c192647026f5e.png" alt="">
+                </section>
+                <section class="hidden-sm hidden-xs col-md-8 col-lg-8">
+                    <ul>
+                        <li><a href="">更多课程</a></li>
+                        <li><a href="">更多课程</a></li>
+                        <li><a href="">更多课程</a></li>
+                        <li><a href="">更多课程</a></li>
+                        <li><a href="">更多课程</a></li>
+                        <li><a href="">更多课程</a></li>
+                        <li><a href="">更多课程</a></li>
+                        <li><a href="">更多课程</a></li>
+                    </ul>
+                </section>
+                <section class="hidden-sm hidden-xs col-md-2 col-lg-2">
+                    <a href="">注册/登录</a>
+                </section>
+                <section class="col-sm-2 col-xs-2 hidden-md hidden-lg">
+                    <i class="iconfont icon-san"></i>
+                </section>
+            </section>
+        </section>
+        <section class="container-fuild banner"></section>
+    </header>
+    <section class="container content">
+        <section class="row">
+            <section>名校、名企，在职技术总监，精心打磨金课</section>
+            <section>用最擅长的技术打造精品课程模块，全程服务，培养自己要用的人，拜师就要选最牛的人！</section>
+        </section>
+
+        <section class="row">
+
+            <section class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <section>
+                    <img src="./img/java2.jpg" alt="">
+
+                    <section class="row">
+                        <h6
+                            class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-push-1 col-sm-push-1 col-md-push-1 col-lg-push-1">
+                            苍老师</h6>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>学习猿地Java导师</li>
+                            <li>现任华为IT系统架构师</li>
+                            <li>北京大学计算机专业本硕毕业</li>
+                            <li>曾担任优酷开发部经理、乐视研发部总监、用友U8事业部架构师等职位</li>
+                        </ul>
+                    </section>
+                    <section>
+                        精通Java EE，以及 WebService，Ajax，Oracle，DB2，MySQL，NoSql、分布式RPC框架Dubbo、SpringCloud、Zookeeper等。
+                    </section>
+                </section>
+            </section>
+
+            <section class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <section>
+                    <img src="./img/java2.jpg" alt="">
+
+                    <section class="row">
+                        <h6
+                            class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-push-1 col-sm-push-1 col-md-push-1 col-lg-push-1">
+                            苍老师</h6>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>学习猿地Java导师</li>
+                            <li>现任华为IT系统架构师</li>
+                            <li>北京大学计算机专业本硕毕业</li>
+                            <li>曾担任优酷开发部经理、乐视研发部总监、用友U8事业部架构师等职位</li>
+                        </ul>
+                    </section>
+                    <section>
+                        精通Java EE，以及 WebService，Ajax，Oracle，DB2，MySQL，NoSql、分布式RPC框架Dubbo、SpringCloud、Zookeeper等。
+                    </section>
+                </section>
+            </section>
+
+            <section class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <section>
+                    <img src="./img/java2.jpg" alt="">
+
+                    <section class="row">
+                        <h6
+                            class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-push-1 col-sm-push-1 col-md-push-1 col-lg-push-1">
+                            苍老师</h6>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>学习猿地Java导师</li>
+                            <li>现任华为IT系统架构师</li>
+                            <li>北京大学计算机专业本硕毕业</li>
+                            <li>曾担任优酷开发部经理、乐视研发部总监、用友U8事业部架构师等职位</li>
+                        </ul>
+                    </section>
+                    <section>
+                        精通Java EE，以及 WebService，Ajax，Oracle，DB2，MySQL，NoSql、分布式RPC框架Dubbo、SpringCloud、Zookeeper等。
+                    </section>
+                </section>
+            </section>
+        </section>
+
+
+        <section><a>查看全部大牛讲师</a></section>
+    </section>
+    <footer class="container">
+        <section class="row">
+            <section class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                <img src="./img/logo8.png" alt="">
+                <section>学习猿地根据IT方向的线上学习特点，研发人机互动教学系统， 打造领先的学习模式。平台签约了十名大牛联合创办， 每个合伙人再召集几名身边的技术大咖，根据程序员的岗位需求研发精品课程，并将一门学科中所需要的全部学习资料汇总在一起， 且实时更新。选中一门课程即拥有全部的精品学习资源，不需要再找其它资源补充， 按计划学习结束后即可直接从事对应的开发工作。</section>
+            </section>
+            <section class="hidden-xs hidden-sm col-md-5 col-lg-5">
+                <section>
+                    <ul>
+                        <li>新手指南</li>
+                        <li>新手指南</li>
+                        <li>新手指南</li>
+                        <li>新手指南</li>
+                    </ul>
+                    <ul>
+                        <li>新手指南</li>
+                        <li>新手指南</li>
+                        <li>新手指南</li>
+                        <li>新手指南</li>
+                    </ul>
+                    <ul>
+                        <li>新手指南</li>
+                        <li>新手指南</li>
+                        <li>新手指南</li>
+                        <li>新手指南</li>
+                    </ul>
+                </section>
+            </section>
+            <section class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <img src="./img/qrcode.png" alt="">
+                <section>学习猿地服务号</section>
+            </section>
+        </section>
+    </footer>
+    <section class="bottom">
+        © 辽ICP备19013136号
+    </section>
+</body>
+
+</html>

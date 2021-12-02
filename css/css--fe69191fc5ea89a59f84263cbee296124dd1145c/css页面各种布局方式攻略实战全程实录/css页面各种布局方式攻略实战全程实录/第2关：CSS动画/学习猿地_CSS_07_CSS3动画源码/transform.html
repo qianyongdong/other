@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transform 2D</title>
+    <style>
+        #box1{
+            width:200px;
+            height:200px;
+            margin:100px;
+            border:1px solid blue;
+        }
+        #box1:hover{
+            /*水平和垂直方向移动函数：translate  支持一个参数，代表水平移动*/
+            /*transform: translate(-30px);*/
+            /*transform:translate(30px,50px);*/
+        }
+        #box2{
+            width:200px;
+            height:500px;
+            background: #fff;
+            border:1px solid #ccc;
+            margin: 100px auto;
+        }
+        #box2:hover{
+            /*transform: translate(0px,-10px);*/
+            /*box-shadow:0px 0px 5px 5px #f4f4f4;*/
+            /*旋转
+                支持一个参数，指旋转角度 单位 deg
+            */
+            /*transform:rotate(20deg);*/
+            /*缩放*/
+            /*
+                支持两个参数，代表水平方向和垂直方向的缩放
+                也支持一个参数，水平和垂直等于一个值
+            */
+            /*transform:scale(0.5,1.2);*/
+            transform:scale(1.2);
+        }
+        #box3{
+            width:650px;
+            height:112px;
+            border:1px solid #ccc;
+            background: url("./img/javajb.png") no-repeat;
+            margin: 100px auto;
+            transition:all 1s;
+        }
+        #box3>div{
+            /*border:1px solid red;*/
+            float:left;
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+        #box3:hover{
+            transform: scale(1.2);
+        }
+        #box4{
+            width:200px;
+            height:200px;
+            border:1px solid blue;
+            margin:100px auto;
+        }
+        #box4:hover{
+            /*倾斜*/
+            transform:skew(40deg,30deg);
+        }
+    </style>
+</head>
+<body>
+<!--    <div id="box1"></div>-->
+<!--    <div id="box2"></div>-->
+<!--        <div id="box3">-->
+<!--            <div>-->
+<!--                <span>350小时</span>-->
+<!--                <p>视频教程</p>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <span>350小时</span>-->
+<!--                <p>视频教程</p>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <span>350小时</span>-->
+<!--                <p>视频教程</p>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <span>350小时</span>-->
+<!--                <p>视频教程</p>-->
+<!--            </div>-->
+<!--        </div>-->
+    <div id="box4"></div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>响应式</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+
+        /*pc端 背景颜色为粉丝*/
+        @media screen and (min-width:960px){
+            body{
+                background: pink;
+            }
+        }
+        /*pad 背景颜色为绿色*/
+        @media screen and (min-width: 750px) and (max-width:960px){
+            body{
+                background: green;
+            }
+        }
+        /*手机端 背景颜色为蓝色*/
+        @media screen and (max-width: 750px) {
+            body{
+                background: blue;
+            }
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>

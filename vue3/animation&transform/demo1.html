@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.1.1/vue.global.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    .animation{
+        animation:leftToRight 3s;
+    }
+    @keyframes leftToRight{
+        0%{
+            transform: translateX(0px);
+        }
+        25%{
+            transform: translateX(25px);
+        }
+        50%{
+            transform: translateX(50px);
+        }
+        75%{
+            transform: translateX(25px);
+        }
+        100%{
+            transform: translateX(0px);
+        }
+    }
+    .transition{
+        transition: 3s background-color ease;
+    }
+    .red{
+        background-color:red;
+    }
+    .yellow{
+        background-color:yellow;
+    }
+    @keyframes comein {
+        0%{
+            transform: translateX(-50px);
+        }
+        100%{
+            transform: translateX(0px);
+        }
+    }
+    @keyframes comeout {
+        0%{
+            transform: translateX(0px);
+        }
+        100%{
+            transform: translateX(-70px);
+        }
+    }
+    .v-enter-active{
+        animation: comein 1s;
+    }
+    .v-leave-active{
+        animation: comeout 1s;
+    }
+    .v-enter-from,.v-leave-to{
+        opacity: 0;
+    }
+    .v-enter-to,.v-leave-from{
+        opacity: 1;
+    }
+
+
+    .enter{
+        animation: comein 1s;
+    }
+    .leave{
+        animation: comeout 1s;
+    }
+    .isHide{
+        display: none;
+    }
+    .jspang-enter-active{
+        animation: comein 1s;
+        transition: opacity 3s ease-out;
+    }
+    .jspang-leave-active{
+        animation: comeout 1s;
+        transition: opacity 3s ease-out;
+    }
+
+    .outIn-enter-from,.outIn-leave-to{
+        opacity: 0;
+    }
+    .outIn-enter-to,.outIn-leave-from{
+        opacity: 1;
+    }
+    .outIn-enter-active,.outIn-leave-active{
+        transition: opacity 2s ease-in;
+    }
+</style>
+<body>
+    <div id="app"></div>
+</body>
+<script type="text/javascript">
+    const app = Vue.createApp({
+        data(){
+            return{
+                animation:{
+                    animation:true
+                },
+                css:{
+                    transition:true,
+                    red:true,
+                    yellow:false
+                },
+                transition:{
+                    enter:false,
+                    leave:true,
+                    isHide:true
+                },
+                isShow:false
+            }
+        },
+        methods:{
+            handleClick(){
+                this.animation.animation=!this.animation.animation
+            },
+            handleClick1(){
+                this.css.red=!this.css.red
+                this.css.yellow=!this.css.yellow
+            },
+            handleClick2(){
+                this.transition.enter=!this.transition.enter
+                this.transition.leave=!this.transition.leave
+                if(!this.transition.isHide){
+                    setTimeout(()=>{
+                    this.transition.isHide=!this.transition.isHide
+                    },1000)
+                }else{
+                    this.transition.isHide=!this.transition.isHide
+                }
+            },
+            handleClick3(){
+                this.isShow=!this.isShow
+            }
+        },
+        template:`
+        <div :class='animation'>jspang</div>
+        <input type='button' @click='handleClick' value='开启/关闭' />
+
+        <div :class='css'>jspang</div>
+        <input type='button' @click='handleClick1' value='开启/关闭' />
+
+        <div :class='transition' >jspang</div>
+        <input type='button' @click='handleClick2' value='开启/关闭' />
+
+        <transition>
+        <div v-if='isShow' >jspang</div>
+        </transition>
+        <input type='button' @click='handleClick3' value='开启/关闭' />
+
+        <transition 
+        name='jspang'
+        >
+        <div v-if='isShow'>jspang</div>
+        </transition>
+        <input type='button' @click='handleClick3' value='开启/关闭' />
+
+        <transition 
+        enter-active-class='animate__animated animate__backInDown'
+        leave-active-class='animate__animated animate__backInDown'
+        >
+        <div v-if='isShow'>jspang</div>
+        </transition>
+        <input type='button' @click='handleClick3' value='开启/关闭' />
+
+        <br/>---------------------------------<br/>
+        <transition 
+        name='jspang'
+        >
+        <div v-if='isShow'>jspang</div>
+        </transition>
+        <input type='button' @click='handleClick3' value='开启/关闭' />
+
+        <br/>------------------------------<br/>
+        <transition 
+        name='jspang' type='animation'
+        >
+        <div v-if='isShow'>jspang</div>
+        </transition>
+        <input type='button' @click='handleClick3' value='开启/关闭' />
+
+        <br/>------------------------------<br/>
+        <transition 
+        name='jspang' :duration='{enter:1000,leave:5000}' 
+        >
+        <div v-if='isShow'>jspang</div>
+        </transition>
+        <input type='button' @click='handleClick3' value='开启/关闭' />
+
+        <br/>------------------------------<br/>
+        
+        <transition 
+        name="outIn" mode="out-in" appear>
+        <div v-if='isShow'>jspang</div>
+        <div v-else>outin</div>
+        </transition
+        >
+        <input type='button' @click='handleClick3' value='开启/关闭' />
+
+        <br/>------------------------------<br/>
+        
+        `
+    })
+    const vm= app.mount('#app')
+</script>
+</html>

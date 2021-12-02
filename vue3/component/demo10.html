@@ -1,0 +1,56 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-06-24 17:03:36
+ * @LastEditTime: 2021-06-25 13:00:11
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \yodn\vue3\component\demo9.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.1.1/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                house:'房子'
+            }
+        },
+        provide:{
+            other:'其他财产'
+        },
+        template:`
+        <div>parent</div>
+        <child :house='house' />
+        `
+    })
+    
+    app.component('child',{
+        props:['house'],
+        template:`
+        <div>-----------------------------</div>
+        <div>child - {{house}}</div>
+        <child-child :house='house'/>
+        `
+    })
+
+    app.component('child-child',{
+        props:['house'],
+        inject:['other'],
+        template:`
+        <div>-----------------------------</div>
+        <div>child-child - {{house}} & {{other}}</div>
+        `
+    })
+    const vm=app.mount("#app")
+</script>
+</html>

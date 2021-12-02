@@ -1,0 +1,173 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-05-13 08:25:39
+ * @LastEditTime: 2021-05-14 14:59:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \学习猿地_CSS_09_栅格系统布局源码\swiper.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>swiper</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    #banner {
+        width: 1050px;
+        height: 200px;
+        background-color: #fba;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #nav {
+        position: absolute;
+        z-index: 1;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #nav>a {
+        width: 20px;
+        height: 20px;
+        background-color: #fba;
+        margin: 0 3px;
+        display: inline-block;
+    }
+
+    #nav>a:hover {
+        background-color: black;
+    }
+
+    #imgList {
+        white-space: nowrap;
+        position: absolute;
+    }
+
+    #imgList>img {
+        width: 1050px;
+        height: 100%;
+
+    }
+</style>
+<script type="text/javascript" src="fz.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+
+    //向页面插入图片代码
+    var imgArray=['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'];
+    var imgList=document.createElement("div");
+    imgList.setAttribute("id","imgList")
+    //页面插入图片索引按钮
+    var nav=document.createElement("ul");
+    nav.setAttribute("id","nav");
+    var index=0;
+    var timer;
+    imgArray.forEach(function(val,i,array){
+        var img=document.createElement("img");
+        img.setAttribute("src",val);
+        //插入图片索引
+        img.index=i;
+        var a=document.createElement("a");
+        //索引按钮绑定事件
+        bind(a,"click",function (event) {
+          // console.log(event)
+          index=event.target.index;
+          checkImg()
+          })
+        //插入按钮索引
+        a.index=i;
+        nav.appendChild(a);
+        imgList.appendChild(img);
+    })
+    //插入最后一张图片
+    imgList.innerHTML+="<img src='img/1.jpg'>"
+    var bannerObj=document.getElementById("banner");
+    bannerObj.appendChild(imgList);
+    bannerObj.appendChild(nav)
+    var aList= nav.getElementsByTagName("a");
+    aList[0].style.backgroundColor="black";
+
+    //切换图片
+    function checkImg(){
+        move(imgList,"left",index*"-1050",100,function () {
+            setA();
+          })
+        
+    }
+    //设置切换点
+    function setA(){
+        if(index==imgArray.length){
+            index=0;
+            imgList.style.left="0px";
+
+        }
+        for(var i=0;i<aList.length;i++){
+            aList[i].style.backgroundColor="";
+        }
+        aList[index].style.backgroundColor="black";
+    }
+    //自动播放
+    autoplay();
+    function autoplay() {
+         setInterval(function(){
+            index++;
+            index%=imgArray.length+1;
+            checkImg()
+        },3000)
+      }
+
+    //封装绑定函数
+    function bind(obj,eventStr,callback){
+        window.addEventListener?obj.addEventListener(eventStr,callback,false):obj.attachEvent("on"+eventStr,callback);
+    }
+    //封装获取style函数
+    function getStyle(obj,name) {
+        return window.getComputedStyle?getComputedStyle(obj,null)[name]:obj.currentStyle[name];
+      }
+    //封装move函数
+    function move(obj,attr,target,speed,callback) {
+        clearInterval(obj.timer)
+        var current=parseInt(getStyle(obj,attr));
+        //current 当前attr ， target 目的地 
+        if(current>target){
+            speed=-speed;//负值向左，正值向右
+        }
+        obj.timer=setInterval(function () {
+            var oldVal=parseInt(getStyle(obj,attr));
+            var newVal=oldVal+speed;
+            //判断newVal
+            //向左移动时，判断newVal是否小于target，向右反之
+            if(speed<0&&newVal<target||speed>0&&newVal>target){
+                newVal=target;
+            }
+            obj.style[attr]=newVal+"px";
+            if(newVal==target){
+                clearInterval( obj.timer);
+                callback&&callback();
+            }
+          },30)
+
+    }
+ 
+    }
+</script>
+
+<body>
+    <div id="banner">
+    </div>
+</body>
+
+</html>

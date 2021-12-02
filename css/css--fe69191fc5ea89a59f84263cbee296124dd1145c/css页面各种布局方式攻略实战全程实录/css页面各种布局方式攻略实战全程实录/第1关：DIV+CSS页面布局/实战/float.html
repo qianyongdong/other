@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>浮动属性</title>
+        <meta charset="utf-8">
+        <style>
+            #box{
+                width:600px;
+                height:600px;
+                background: deeppink;
+                /*在不设置宽高的情况下，让父类可以感知子类的高度*/
+                /*overflow:hidden;*/
+                /*float: right;*/
+            }
+            #box>div:first-child{
+                width:200px;
+                height:200px;
+                background: green;
+                /*左浮动*/
+                float:right;
+            }
+            #box>div:nth-child(2){
+                width:200px;
+                height:200px;
+                background: aqua;
+                float:right;
+            }
+            #box>div:nth-child(3){
+                width:200px;
+                height:200px;
+                background: red;
+                float:right;
+            }
+            #box>div:last-child{
+                width:400px;
+                height:400px;
+                background: #000;
+                /*清楚两边浮动*/
+                clear: both;
+                /*设置该元素左浮动*/
+                /*float:left;*/
+            }
+            /*span{*/
+            /*    background: red;*/
+            /*    width:200px;*/
+            /*    height:200px;*/
+            /*    float:left;*/
+            /*}*/
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <!--行内元素:没有宽高属性，并且不会独占一行-->
+<!--        <span>-->
+<!--            成绩自己的只需要一套精品!-->
+<!--        </span>-->
+<!--        <span>-->
+<!--            成绩自己的只需要一套精品!-->
+<!--        </span>-->
+    </body>
+</html>

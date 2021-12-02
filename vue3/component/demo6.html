@@ -1,0 +1,104 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-06-24 17:02:40
+ * @LastEditTime: 2021-06-25 09:18:39
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \yodn\demo6.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.1.1/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                counter:0
+            }
+        },
+        methods: {
+            handleAdd(){
+                this.counter++
+            },
+            handleAdd1(param){
+                this.counter+=param
+            },
+            handleAdd2(param){
+                console.log(param)
+                this.counter=param
+            }
+        },
+        template:`
+            <Counter :counter='counter' @click='handleAdd'/>
+
+            <Counter2 :counter='counter' @add='handleAdd1'/>
+
+            <Counter3 :counter='counter' @add='handleAdd2'/>
+
+            <Counter4 :counter='counter' @add='handleAdd2'/>
+
+            <Counter4 :counter='counter' @add='handleAdd2'/>
+        `
+    })
+
+    app.component('Counter',{
+        props:['counter'],
+        template:`
+        {{counter}}<button :='$attrs'>增加</button>
+        `
+    })
+
+    app.component('Counter2',{
+        props:['counter'],
+        emits:['add'],
+        methods:{
+            handleClick(){
+               this.$emit('add',2)
+            }
+        },
+        template:`
+        {{counter}}<button @click='handleClick'>增加</button>
+        `
+    })
+
+    app.component('Counter3',{
+        props:['counter'],
+        emits:['add'],
+        methods:{
+            handleClick(){
+               this.$emit('add',this.counter+3)
+            }
+        },
+        template:`
+        {{counter}}<button @click='handleClick'>增加</button>
+        `
+    })
+
+    app.component('Counter4',{
+        props:['counter'],
+        emits:{
+            // add:value=>{return value<20?true:false} 
+            add:value=> value<20?true:false
+        },
+        methods:{
+            handleClick(){
+               this.$emit('add',this.counter+3)
+            }
+        },
+        template:`
+        {{counter}}<button @click='handleClick'>增加</button>
+        `
+    })
+  
+    const vm=app.mount("#app")
+</script>
+</html>

@@ -1,0 +1,51 @@
+﻿a{
+    text-decoration:none;
+}
+/*设置顶部样式 */
+#header{
+    width:100%;
+    height:40px;
+    /*background: red;*/
+}
+.header{
+    width:1200px;
+    height:40px;
+    /*background: green;*/
+    /*定义边框*/
+    border:1px solid red;
+}
+.header_left{
+    width:260px;
+    height:40px;
+    /*background: aqua;*/
+    float:left;
+}
+/*设置顶部左侧div中的两个div浮动*/
+.header_left>div:first-child{
+    float:left;
+}
+.header_left>div:last-child{
+    float:right;
+}
+/*设置头部内容样式*/
+.header_left>div{
+    float:left;
+    /*background: red;*/
+    line-height:40px;
+    color:#8492A6;
+}
+.header_left>div>span{
+    font-weight:bold;
+}
+.header_left>div:nth-child(2)>a,.header_left>div:nth-child(2)>a>img{
+    color:#8492A6;
+}
+.header_left>div:nth-child(2)>a>img{
+    width:20px;
+}
+.header_right{
+    width:400px;
+    height:40px;
+    background: aquamarine;
+    float:right;
+}

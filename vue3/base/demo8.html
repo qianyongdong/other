@@ -1,0 +1,67 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-06-23 15:23:26
+ * @LastEditTime: 2021-06-23 16:17:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \yodn\demo8.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo8</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<style>
+    body{
+        background-color:black;
+        color:white;
+    }
+</style>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                message:'jspang.com',
+                classString:"red",
+                classObject:{
+                    red:false,
+                    background:true
+                },
+                classArray:['green','background',{red:true}],
+                styleString:'color:orange',
+                styleObject:{
+                    color:'red',
+                    background:'yellow'
+                }
+            }
+        },
+        template:`
+        <h2 v-bind:class="classArray">{{message}}</h2>
+        <h2 :style='styleObject'>style</h2>
+        <sonCom :class='classString'/>
+         `
+    })
+    app.component('sonCom',{
+       template:`
+        <div>
+        <div>sonCom</div>
+        <div>JISHUPANG</div>
+        </div>
+        `
+    })
+    const vm = app.mount('#app')
+    
+</script>
+<style>
+    .red{color: red !important;}
+    .green{color:green}
+    .background{background-color: orange;}
+</style>
+</html>

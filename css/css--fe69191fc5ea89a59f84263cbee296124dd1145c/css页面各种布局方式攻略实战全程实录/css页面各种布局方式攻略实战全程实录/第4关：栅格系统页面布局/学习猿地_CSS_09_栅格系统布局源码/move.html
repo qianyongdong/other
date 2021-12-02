@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>move</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    body {
+        position: relative;
+    }
+
+    #div1 {
+        width: 200px;
+        height: 200px;
+        background-color: #bfa;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    #div2 {
+        width: 200px;
+        height: 200px;
+        background-color: #fba;
+        position: absolute;
+        top: 200px;
+        left: 200px;
+    }
+</style>
+<script type="text/javascript">
+    window.onload = function () {
+        /**
+         * @description: 封装获取Style函数
+         * @param {obj：对象 name：属性名}
+         * @return {属性值}
+         */
+        function getStyle(obj, name) {
+            return window.getComputedStyle ? getComputedStyle(obj, null)[name] : obj.currentStyle[name];
+        }
+        /**
+         * @description:封装绑定响应事件函数
+         * @param {obj：对象 eventStr：事件字符串 callback：回调事件}
+         * @return {*}
+         */
+        function bind(obj, eventStr, callback) {
+            window.addEventListener ? obj.addEventListener(eventStr, callback, false) : obj.attachEvent("on" + eventStr, callback);
+        }
+        //获取div1元素绑定响应事件
+        var div1 = document.getElementById("div1");
+        drag(div1)
+        drag(div2)
+
+        /**
+         * @description: 拖拽时间函数
+         * @param {*} obj:对象
+         * @return {*}
+         */
+        function drag(obj) {
+            bind(obj, 'mousedown', function (event) {
+
+                var ol = event.clientX - obj.offsetLeft;
+                var ot = event.clientY - obj.offsetTop;
+                //console.log(ol,ot)
+                // console.log(div1)
+                var handler = function mouseMove(ent) {
+                    // console.log(ent)
+                    obj.style.left = ent.clientX - ol + "px";
+                    obj.style.top = ent.clientY - ot + "px";
+                    //div1.style.backgroundColor = hexToRgba(colorRGB2Hex(getStyle(div1, "backgroundColor"))+100)
+                    // console.log(parseInt(colorRGB2Hex(getStyle(div1, "backgroundColor")),16))
+                }
+                bind(document, 'mousemove', handler)
+                bind(obj, 'mouseup', function () {
+                    // console.log(window.document.onmousemove)
+                    // document.onmousemove=null;
+                    // console.log(document.onmousemove)
+                    document.removeEventListener("mousemove", handler, false)
+                })
+            })
+        }
+
+
+    }
+</script>
+
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-06-23 17:32:01
+ * @LastEditTime: 2021-06-24 09:45:14
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \yodn\demo10.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                input:'',
+                textarea:'',
+                checked:false,
+                checkboxArray:[],
+                radio:'',
+                tirm:'',
+                lazy:'',
+                count:0,
+                value:'未选择内容',
+                number:1
+            }
+        },
+        methods: {
+            handle1(){
+                alert('mouse')
+            },
+            handle2(){
+                alert('keyboard')
+            },
+            handleBtnClick(){
+                alert('外部事件')
+            },
+            addCountClick(){
+                alert('内部事件')
+            }
+        },
+        //事件修饰符：prevent阻止默认行为 捕获模式capture 由外到内（默认是冒泡模式）  once单次事件 passive滚动性能修饰符
+         //keydown键盘事件修饰符:enter,tab,delete,esc,up,down,left,right
+         //mouse鼠标事件修饰符:left,right,middle
+         //model修饰符：tirm清除内容前后空格 lazy失去光标后响应事件 
+        template:`
+        <div @click='handleBtnClick' style="border:1px solid red;">
+            <div>冒泡</div>
+            <button @click="addCountClick">内部事件</button>
+        </div>
+        <div @click='handleBtnClick' style="border:1px solid red;">
+            <div>stop修饰符 阻止冒泡只执行点击的dom事件</div>
+            <button @click.stop="addCountClick">stop内部事件</button>
+        </div>
+        
+        <div @click.self='handleBtnClick' style="border:1px solid red;">
+            我是最外层的div文字
+            <div>self修饰符 阻止冒泡 只执行自身dom事件</div>
+            <button @click="addCountClick">self内部事件绑定在外部div</button>
+        </div>
+
+        <a href='baidu.com' @click="addCountClick">prevent阻止默认行为</a>
+
+        <div @click.capture='handleBtnClick' style="border:1px solid red;">
+            <div>捕获 元素内的所有事件先触发绑定捕获的事件再触发自身</div>
+            <button @click="addCountClick">内部事件</button>
+            <button @click="addCountClick">内部事件</button>
+        </div>
+        
+        <button @click.once="addCountClick">once</button><br/>
+
+        passive滚动性能修饰符 告诉浏览器没有用preventDefault阻止默认动作 浏览器不用监听可以提升性能 一般用于移动浏览器滚动监听@scoll，@touchmove 
+        <a @click.passive="addCountClick" href="javascript:alert('default active')">点击</a>
+
+
+        <div @click='handle1'>mouse</div>
+        <input @keydown.enter='handle2'><br/>
+
+        {{input}}<input v-model='input'/><br/>
+        {{textarea}}<textarea v-model='textarea'/><br/>
+        {{checked}}<input type='checkbox' v-model='checked'/><br/>
+
+        {{checkboxArray}}<br/>
+        zhangsan<input type='checkbox' v-model='checkboxArray' value='zhangsan'/><br/>
+        lisi<input type='checkbox' v-model='checkboxArray' value='lisi'/><br/>
+
+        {{radio}}<br/>
+        zhangsan<input type='radio' v-model='radio' value='zhangsan'/><br/>
+        lisi<input type='radio' v-model='radio' value='lisi'/><br/>
+        
+        
+        {{tirm}}<br/>
+        <input type='text' v-model.trim='tirm' /><br/>
+        {{lazy}}<br/>
+        <input type='text' v-model.lazy='lazy' /><br/>
+        
+        false|true-value<br/>
+        {{value}}<input type='checkbox' false-value="false" true-value="true" v-model='value'/><br/>
+
+        默认input会自动转string {{number}}{{typeof number}}<br/>
+        <input type="text" v-model.number='number'>
+        `
+    })
+
+    const vm= app.mount('#app')
+    
+</script>
+<style>
+
+</style>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子模型</title>
+    <style>
+        #box{
+            width:620px;
+            height:620px;
+            background: pink;
+        }
+        #box>div:nth-child(1){
+            width:600px;
+            height:200px;
+            background: blue;
+            float:left;
+        }
+        #box>div:nth-child(2){
+            width:200px;
+            height:200px;
+            background: yellow;
+            float:left;
+        }
+        #box>div:nth-child(3){
+            width:200px;
+            height:200px;
+            background: green;
+            float:left;
+            /*当前元素与其他元素之间的距离 外间距*/
+            /*margin-top:10px;*/
+            /*margin-bottom:10px;*/
+            /*margin-left:10px;*/
+            /*margin-right:10px;*/
+            /*margin:10px 10px 10px 10px;*/
+            /*margin:20px 10px 20px;*/
+            /*margin:20px 10px;*/
+            margin:10px;
+        }
+        #box>div:nth-child(4){
+            width:200px;
+            height:200px;
+            background: aqua;
+            float:left;
+        }
+        #box>div:nth-child(5){
+            width:600px;
+            height:200px;
+            background: blueviolet;
+            float:left;
+        }
+        #block{
+            width:1200px;
+            background: blue;
+            height: 40px;
+            /*实现让块状元素居中显示*/
+            margin:10px auto;
+        }
+        #box1{
+            margin-top: -100px;
+            width:200px;
+            background: red;
+            height:200px;
+            margin-bottom: 100px;
+        }
+        #box2{
+            width:200px;
+            background: yellow;
+            height: 200px;
+            margin-top:50px;
+        }
+        #father{
+            width: 500px;
+            height:200px;
+            /*加一像素红色 实线边框*/
+            border: 1px solid red;
+            background: green;
+        }
+        #son{
+            width:200px;
+            height:100px;
+            background: pink;
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div>顶部元素</div>
+        <div>左侧元素</div>
+        <div id="self">当前元素</div>
+        <div>右侧元素</div>
+        <div>底部元素</div>
+    </div>
+    <!--可以设置块状元素居中-->
+    <div id="block"></div>
+    <!--外间距合并-->
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <!--包含式外间距合并-->
+    <div id="father">
+        <div id="son"></div>
+    </div>
+</body>
+</html>

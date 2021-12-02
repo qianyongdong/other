@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.1.1/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                value:'value'
+            }
+        },
+        template:`
+        <Slot1 />
+        <Slot1><span style='color:red;font-style:normal'>content</span></Slot1>
+        <Slot1><span>{{value}}</span></Slot1>
+        <Slot2><span>content</span></Slot2>
+        <Slot22><span>content</span></Slot22>
+
+        <Slot3>
+        <template v-slot:one><span>01</span></template>
+        <template v-slot:three><span>03</span></template>    
+        </Slot3>
+
+        <Slot3>
+        <template #one><span>01</span></template>
+        <template #three><span>03</span></template>    
+        </Slot3>
+
+        <list v-slot="props"><span>{{props.item}}</span></list>
+
+        <list v-slot="{item}"><span>{{item}}</span></list>
+        `
+    })
+  
+    app.component('Slot1',{
+        template:`
+        <div>
+        <em>1<slot></slot>1</em>
+        </div>
+        `
+    })
+
+    app.component('Slot2',{
+        data(){
+            return{
+                value:'slot2'
+            }
+        },
+        template:`
+        <div>
+        {{value}}<Slot1 />
+        <em>1<slot></slot>1</em>
+        </div>
+        `
+    })
+
+    app.component('Slot22',{
+        data(){
+            return{
+                value:'slot2'
+            }
+        },
+        template:`
+        <div>
+        <Slot1 />
+        <em>1<slot></slot>1</em>
+        </div>
+        `
+    })
+
+    app.component('Slot3',{
+        template:`
+        <div>
+       <slot name='one'></slot>
+       <span>02</span>
+       <slot name='three'></slot>
+        </div>
+        `
+    })
+
+    app.component('List',{
+        data(){
+            return{
+                list:['zhangsan','lisi','wangwu']
+            }
+        },
+        template:`
+        <slot v-for='item in list' :item='item' />
+        `
+    })
+    const vm=app.mount("#app")
+</script>
+</html>

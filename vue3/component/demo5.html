@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.1.1/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        template:`
+        <Hello class='red' msg='技术胖'/>
+        <Hello1 class='red' msg='技术胖'/>
+        <Hello2 class='red' msg='技术胖'/>
+        <Hello3 class='red' msg='技术胖'/>
+        `
+    })
+    app.component('Hello',{
+        mounted() {
+            console.log(this.$attrs.class)
+        },
+        props:['msg'],
+        template:`
+        <h2>{{msg}}</h2>
+        `
+    })
+    app.component('Hello1',{
+        props:['msg'],
+        inheritAttrs:false,
+        template:`
+        <h2>{{msg}}</h2>
+        `
+    })
+    app.component('Hello2',{
+        template:`
+        <h2 :='$attrs'>123</h2>
+        <h2 v-bind:class='$attrs.class'>123</h2>
+        `
+    })
+    app.component('Hello3',{
+        props:{
+            msg:{
+                type:String,
+                validator:function(value){
+                    if(value=='技术胖') return true
+                }
+            }
+        },
+        template:`
+        <h2>{{msg}}</h2>
+        `
+    })
+    const vm=app.mount("#app")
+</script>
+<style>
+    .red{
+        color: red;
+    }
+</style>
+</html>

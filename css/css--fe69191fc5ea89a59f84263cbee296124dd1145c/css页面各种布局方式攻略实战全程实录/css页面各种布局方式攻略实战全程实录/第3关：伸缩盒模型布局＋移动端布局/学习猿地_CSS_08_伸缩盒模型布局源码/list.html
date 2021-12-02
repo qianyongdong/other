@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习猿地课程列表页</title>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1362546_4gl5w4cegvt.css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+        body,ul,li,a{
+            margin: 0px;
+            padding: 0px;
+            list-style:none;
+            text-decoration:none;
+        }
+        body{
+            background: #f4f4f4;
+        }
+        /*头部样式*/
+        header{
+            width: 100%;
+            height: 60px;
+            background: #fff;
+            margin-bottom: 20px;
+            box-shadow:0px 0px 5px 5px #ccc;
+        }
+        .top{
+            height:60px;
+            width:60%;
+            margin:0 auto;
+            /*border:1px solid green;*/
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .top_left{
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+        .top_left>img{
+            height:50px;
+        }
+        .top_center{
+            flex-grow: 5;
+        }
+        .top_center>ul,.top_right>ul{
+            height:60px;
+            display: flex;
+            justify-content: space-between;
+            align-items:center;
+        }
+        .top_center>ul>li>a,.top_right>ul>li>a{
+            font-size:14px;
+            color:rgba(31,45,61,0.5);
+            font-weight: bold;
+        }
+        /*更多课程中的导航条*/
+        .top_center>ul>li:first-child{
+            position: relative;
+        }
+        .top_center>ul>li:first-child:hover>div{
+            display: block;
+        }
+        .top_center>ul>li:first-child>div{
+            /*border:1px solid red;*/
+             position:absolute;
+            padding: 10px 0px;
+            padding-left:15px ;
+
+            width: 180px;
+            background: #fff;
+            top:25px;
+            left:-10px;
+            display: none;
+        }
+        .top_center>ul>li:first-child>div>ul>li>a>img{
+           height: 40px;
+            /*border:1px solid red;*/
+        }
+        .top_center>ul>li:first-child>div>ul>li>a{
+            /*border:1px solid red;*/
+            display: flex;
+            /*justify-content: space-between;*/
+            align-items: center;
+            /*padding: 0px 10px;*/
+        }
+        .top_center>ul>li:first-child>div>ul>li>a>span{
+            color:#8492a6;
+            font-size:12px;
+            font-weight: bold;
+            /*border:1px solid red;*/
+            margin-left:15px;
+        }
+        .top_center>ul>li:first-child>div>ul>li{
+            /*border:1px solid red;*/
+            margin-top: 5px;
+        }
+        .top_right{
+            flex-grow: 2;
+        }
+        .top_right>ul{
+            justify-content: space-around;
+        }
+        /*导航样式*/
+        nav{
+            width:60%;
+            height: 80px;
+            margin:0 auto;
+            /*border:1px solid green;*/
+            background: #fff;
+            box-shadow:0px 5px 5px #ccc;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        nav>ul{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 80px;
+        }
+        nav>ul>li:first-child{
+            padding: 10px 30px;
+            /*border:1px solid red;*/
+            background: #8492a6;
+            border-radius: 5px;
+        }
+        nav>ul>li>a{
+            color:#8492a6;
+        }
+        nav>ul>li:first-child>a{
+            color:#fff;
+        }
+
+        /*内容样式开始*/
+        #content{
+            width: 60%;
+            /*border:1px solid blue;*/
+            margin:0 auto;
+            margin-bottom: 20px;
+        }
+        .content{
+            width:100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /*border:2px solid green;*/
+            /*height:300px;*/
+            margin-bottom: 50px;
+        }
+        .content>section{
+            width:23%;
+            /*height:200px;*/
+            /*border:1px solid green;*/
+        }
+        .content>section>section:first-child{
+            /*border:1px solid red;*/
+            position: relative;
+            min-width:220px;
+        }
+        .content>section>section:first-child>img{
+            width: 100%;
+            border-radius: 5px;
+            min-width: 220px;
+        }
+        .content>section>section:first-child>span{
+            position: absolute;
+            background:#ffaa00;
+            border:2px solid #fff;
+            color:#fff;
+            font-size:12px;
+            padding: 0px 5px;
+            border-radius: 10px;
+            top:5px;
+            left:-10px;
+        }
+        .content>section>section:first-child>section{
+            /*border:1px solid blue;*/
+            position: absolute;
+            bottom: 10px;
+            left:10px;
+            display: flex;
+        }
+        .content>section>section:first-child>section>article{
+            background: rgba(0,0,0,.5);
+            color:#fff;
+            text-align: center;
+            font-size: 12px;
+            padding: 2px 5px;
+            margin-right: 5px;
+        }
+        .content>section>section:nth-child(2){
+           font-size: 14px;
+            margin-bottom: 20px;
+            min-width:220px;
+        }
+        .content>section>section:last-child{
+            /*border:1px solid red;*/
+            min-width: 220px;
+        }
+        .content>section>section:last-child>article>span{
+            font-size:12px;
+            color:#8492a6;
+        }
+        .content>section>section:last-child>article:first-child>span:first-child{
+            background:#b572e5;
+            color:#fff;
+            border-radius: 5px;
+            padding: 2px 5px;
+        }
+        .content>section>section:last-child>article:first-child>span:last-child{
+            float:right;
+            margin-right: 5px;
+            margin-top:2px;
+        }
+        .content>section>section:last-child>article:first-child>span:last-child>i{
+            color:orange;
+            letter-spacing: -5px;
+        }
+        .content>section>section:last-child>article:last-child>span:nth-child(2){
+            color:#000;
+            font-size:14px;
+        }
+        .content>section>section:last-child>article:last-child>span:last-child{
+            float:right;
+            color:#fff;
+            background: orangered;
+            border-radius: 5px;
+            padding: 2px 5px;
+            margin-top: 2px;
+        }
+        /*分页效果*/
+        #page{
+            width:60%;
+            margin:0 auto;
+            border:1px solid green;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        #page>article{
+            border:1px solid red;
+            padding: 8px 15px;
+            margin-left: 5px;
+        }
+        /*底部样式*/
+        footer{
+            width:100%;
+            background:#fff;
+            height:320px;
+        }
+        .footer_bottom{
+            margin: 0 auto;
+            width: 60%;
+            height: 20px;
+            text-align: center;
+        }
+        .footer{
+            width: 60%;
+            /*border:1px solid blue;*/
+            height: 300px;
+            margin:0 auto;
+            display: flex;
+            justify-content: space-between;
+            font-size:14px;
+            color:#8492a6;
+        }
+        .footer_left{
+            /*border:1px solid red;*/
+            width: 40%;
+            position: relative;
+        }
+        .footer_left>img{
+            width: 130px;
+            position: absolute;
+            top:-30px;
+            left:calc(50% - 130px / 2);
+        }
+        .footer_left>p{
+            margin-top: 100px;
+            text-indent: 2em;
+        }
+        .footer_center{
+            /*border:1px solid red;*/
+            flex-grow: 5;
+            display: flex;
+            justify-content: space-around;
+        }
+        .footer_center>div{
+            /*border:1px solid green;*/
+        }
+        .footer_center>div>h6{
+            font-size:18px;
+            border-bottom: 1px solid #0097e1;
+            padding-bottom:10px ;
+        }
+        .footer_center>div>ul{
+            /*border:1px solid blue;*/
+            text-align: center;
+        }
+        .footer_center>div>ul>li{
+            margin-top: 10px;
+        }
+        .footer_center>div>ul>li>a{
+            color:#8492a6;
+        }
+        .footer_right{
+            /*border:1px solid red;*/
+            /*flex-grow: 1;*/
+            display: flex;
+            flex-direction: column;
+        }
+        .footer_right>img{
+            margin-top: 80px;
+            width: 100px;
+        }
+        .pad{
+            display: none;
+        }
+        /*pc样式*/
+        @media screen and (min-width:960px) {
+            .top{
+                min-width:960px;
+            }
+            nav{
+                min-width:960px;
+            }
+            /*内容区域*/
+            #content{
+                min-width:960px;
+            }
+            /*底部样式*/
+            .footer{
+                min-width: 960px;
+            }
+            .footer_bottom{
+                min-width: 960px;
+            }
+        }
+        /*pad端样式*/
+        @media screen and (max-width:960px) and (min-width: 750px) {
+            .top{
+               min-width: 750px;
+            }
+            .top_center,.top_right{
+                display: none;
+            }
+            .pad{
+                display: block;
+                line-height: 60px;
+                color:#8492a6;
+            }
+            .pad>div{
+                width: 100%;
+                height:300px;
+                background: #fff;
+                position: absolute;
+                left:0px;
+                z-index: 1;
+                display: none;
+            }
+            .pad>div>section{
+                width: 60%;
+                /*border:1px solid red;*/
+                margin: 0 auto;
+            }
+            .pad:hover>div{
+                display: block;
+            }
+            /*导航样式*/
+            nav{
+                min-width:750px;
+            }
+            #content{
+                min-width:750px;
+                /*border:1px solid blue;*/
+            }
+            .content{
+                min-width: 750px;
+                flex-wrap: wrap;
+                /*border:2px solid #000;*/
+                margin-bottom: 0px;
+            }
+            #content>.content>section{
+                width:46%;
+                margin-bottom:40px;
+                /*border:1px solid red;*/
+            }
+            /*底部样式*/
+            .footer{
+                min-width: 750px;
+            }
+            .footer_bottom{
+                min-width: 750px;
+            }
+        }
+        /*手机端样式*/
+        @media screen and (max-width:750px){
+            .top{
+                min-width: 200px;
+            }
+            .top_center,.top_right{
+                display: none;
+            }
+            .pad{
+                display: block;
+                line-height: 60px;
+                color:#8492a6;
+            }
+            .pad>div{
+                width: 100%;
+                height:300px;
+                background: #fff;
+                position: absolute;
+                left:0px;
+                z-index: 1;
+                display: none;
+            }
+            .pad>div>section{
+                width: 60%;
+                /*border:1px solid red;*/
+                margin: 0 auto;
+            }
+            .pad:hover>div{
+                display: block;
+            }
+            /*导航样式*/
+            nav{
+                /*border: 1px solid blue;*/
+                min-width: 200px;
+                height: 130px;
+            }
+            nav>ul{
+                /*border:1px solid red;*/
+                flex-wrap: wrap;
+                padding: 5px;
+            }
+            nav>ul>li{
+                width: 32%;
+                padding: 8px 0px;
+                text-align: center;
+            }
+            nav>ul>li:first-child{
+                padding: 10px 0;
+            }
+            #content{
+                min-width:200px;
+                /*border:1px solid blue;*/
+            }
+            .content{
+                min-width: 200px;
+                flex-wrap: wrap;
+                /*border:2px solid #000;*/
+                margin-bottom: 0px;
+            }
+            #content>.content>section{
+                width:100%;
+                margin-bottom:40px;
+                /*border:1px solid red;*/
+            }
+            /*底部样式*/
+            .footer{
+                min-width: 200px;
+                flex-direction: column;
+                height: auto;
+            }
+            .footer_bottom{
+                min-width: 200px;
+            }
+            /*隐藏中间内容*/
+            .footer_center{
+                display: none;
+            }
+            /*从新调整样式*/
+            .footer_left{
+                /*border:1px solid blue;*/
+                width:100%;
+            }
+            .footer_right{
+                /*border:1px solilid green;*/
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            .footer_right>img{
+                margin-top: 20px;
+            }
+            footer{
+                height: auto;
+            }
+        } */
+    </style>
+</head>
+<body>
+    <header>
+        <section class="top">
+            <section class="top_left"><img src="img/logo2.png"></section>
+            <section class="top_center">
+                <ul>
+                    <li>
+                        <a href="">
+                        更多课程<i class="iconfont icon-icon-test"></i></a>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href=""><img src="./img/java.jpg" alt=""><span>Java开发工程师</span></a>
+                                </li>
+                                <li>
+                                    <a href=""><img src="./img/java.jpg" alt=""><span>Java开发工程师</span></a>
+                                </li>
+                                <li>
+                                    <a href=""><img src="./img/java.jpg" alt=""><span>Java开发工程师</span></a>
+                                </li>
+                                <li>
+                                    <a href=""><img src="./img/java.jpg" alt=""><span>Java开发工程师</span></a>
+                                </li> <li>
+                                <a href=""><img src="./img/java.jpg" alt=""><span>Java开发工程师</span></a>
+                            </li> <li>
+                                <a href=""><img src="./img/java.jpg" alt=""><span>Java开发工程师</span></a>
+                            </li> <li>
+                                <a href=""><img src="./img/java.jpg" alt=""><span>Java开发工程师</span></a>
+                            </li>
+
+
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="">猿生态</a></li>
+                    <li><a href="">猿著</a></li>
+                    <li><a href="">猿创试题</a></li>
+                    <li><a href="">猿材料</a></li>
+                    <li><a href="">猿工手册</a></li>
+                    <li><a href="">猿代码</a></li>
+                    <li><a href="">猿圈</a></li>
+                    <li><a href="">猿来如此</a></li>
+                </ul>
+            </section>
+            <section class="top_right">
+                <ul>
+                    <li><a href="">注册</a></li>
+                    <li><a href="">登录</a></li>
+                </ul>
+            </section>
+            <section class="pad iconfont icon-san">
+                <div>
+                    <section>
+                        <ul>
+                            <li><a href="">更多课程</a></li>
+                            <li><a href="">猿工手册</a></li>
+                            <li><a href="">猿代码</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </section>
+        </section>
+    </header>
+    <!--导航开始-->
+    <nav>
+        <ul>
+            <li><a href="">全部</a></li>
+            <li><a href="">Java</a></li>
+            <li><a href="">Python</a></li>
+            <li><a href="">PHP</a></li>
+            <li><a href="">Go</a></li>
+            <li><a href="">大数据</a></li>
+            <li><a href="">前端</a></li>
+            <li><a href="">UI/UE</a></li>
+            <li><a href="">Linux</a></li>
+        </ul>
+    </nav>
+    <!--内容区域-->
+    <section id="content">
+        <section class="content">
+            <section>
+                <section>
+                    <span>升级</span>
+                    <img src="./img/FtS-vBsgJ8Ea_q90k1uzPI7S2lpC.jpg" />
+                    <section>
+                        <article>Python</article>
+                        <article>核心类库</article>
+                    </section>
+                </section>
+                <section>Python高级特性</section>
+                <section>
+                    <article>
+                        <span>python</span>
+                        <span>高级</span>
+                        <span class="iconfont icon-xiaoren"></span>
+                        <span>5533</span>
+                        <span>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                        </span>
+                    </article>
+                    <article>
+                        <span>2019-07-18</span>
+                        <span>已更新至主课</span>
+                        <span>限时免费</span>
+                    </article>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <span>升级</span>
+                    <img src="./img/FtS-vBsgJ8Ea_q90k1uzPI7S2lpC.jpg" />
+                    <section>
+                        <article>Python</article>
+                        <article>核心类库</article>
+                    </section>
+                </section>
+                <section>Python高级特性</section>
+                <section>
+                    <article>
+                        <span>python</span>
+                        <span>高级</span>
+                        <span class="iconfont icon-xiaoren"></span>
+                        <span>5533</span>
+                        <span>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                        </span>
+                    </article>
+                    <article>
+                        <span>2019-07-18</span>
+                        <span>已更新至主课</span>
+                        <span>限时免费</span>
+                    </article>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <span>升级</span>
+                    <img src="./img/FtS-vBsgJ8Ea_q90k1uzPI7S2lpC.jpg" />
+                    <section>
+                        <article>Python</article>
+                        <article>核心类库</article>
+                    </section>
+                </section>
+                <section>Python高级特性</section>
+                <section>
+                    <article>
+                        <span>python</span>
+                        <span>高级</span>
+                        <span class="iconfont icon-xiaoren"></span>
+                        <span>5533</span>
+                        <span>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                        </span>
+                    </article>
+                    <article>
+                        <span>2019-07-18</span>
+                        <span>已更新至主课</span>
+                        <span>限时免费</span>
+                    </article>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <span>升级</span>
+                    <img src="./img/FtS-vBsgJ8Ea_q90k1uzPI7S2lpC.jpg" />
+                    <section>
+                        <article>Python</article>
+                        <article>核心类库</article>
+                    </section>
+                </section>
+                <section>Python高级特性</section>
+                <section>
+                    <article>
+                        <span>python</span>
+                        <span>高级</span>
+                        <span class="iconfont icon-xiaoren"></span>
+                        <span>5533</span>
+                        <span>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                        </span>
+                    </article>
+                    <article>
+                        <span>2019-07-18</span>
+                        <span>已更新至主课</span>
+                        <span>限时免费</span>
+                    </article>
+                </section>
+            </section>
+        </section>
+        <section class="content">
+            <section>
+                <section>
+                    <span>升级</span>
+                    <img src="./img/FtS-vBsgJ8Ea_q90k1uzPI7S2lpC.jpg" />
+                    <section>
+                        <article>Python</article>
+                        <article>核心类库</article>
+                    </section>
+                </section>
+                <section>Python高级特性</section>
+                <section>
+                    <article>
+                        <span>python</span>
+                        <span>高级</span>
+                        <span class="iconfont icon-xiaoren"></span>
+                        <span>5533</span>
+                        <span>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                        </span>
+                    </article>
+                    <article>
+                        <span>2019-07-18</span>
+                        <span>已更新至主课</span>
+                        <span>限时免费</span>
+                    </article>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <span>升级</span>
+                    <img src="./img/FtS-vBsgJ8Ea_q90k1uzPI7S2lpC.jpg" />
+                    <section>
+                        <article>Python</article>
+                        <article>核心类库</article>
+                    </section>
+                </section>
+                <section>Python高级特性</section>
+                <section>
+                    <article>
+                        <span>python</span>
+                        <span>高级</span>
+                        <span class="iconfont icon-xiaoren"></span>
+                        <span>5533</span>
+                        <span>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                        </span>
+                    </article>
+                    <article>
+                        <span>2019-07-18</span>
+                        <span>已更新至主课</span>
+                        <span>限时免费</span>
+                    </article>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <span>升级</span>
+                    <img src="./img/FtS-vBsgJ8Ea_q90k1uzPI7S2lpC.jpg" />
+                    <section>
+                        <article>Python</article>
+                        <article>核心类库</article>
+                    </section>
+                </section>
+                <section>Python高级特性</section>
+                <section>
+                    <article>
+                        <span>python</span>
+                        <span>高级</span>
+                        <span class="iconfont icon-xiaoren"></span>
+                        <span>5533</span>
+                        <span>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                        </span>
+                    </article>
+                    <article>
+                        <span>2019-07-18</span>
+                        <span>已更新至主课</span>
+                        <span>限时免费</span>
+                    </article>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <span>升级</span>
+                    <img src="./img/FtS-vBsgJ8Ea_q90k1uzPI7S2lpC.jpg" />
+                    <section>
+                        <article>Python</article>
+                        <article>核心类库</article>
+                    </section>
+                </section>
+                <section>Python高级特性</section>
+                <section>
+                    <article>
+                        <span>python</span>
+                        <span>高级</span>
+                        <span class="iconfont icon-xiaoren"></span>
+                        <span>5533</span>
+                        <span>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                        </span>
+                    </article>
+                    <article>
+                        <span>2019-07-18</span>
+                        <span>已更新至主课</span>
+                        <span>限时免费</span>
+                    </article>
+                </section>
+            </section>
+        </section>
+        <section class="content">
+            <section>
+                <section>
+                    <span>升级</span>
+                    <img src="./img/FtS-vBsgJ8Ea_q90k1uzPI7S2lpC.jpg" />
+                    <section>
+                        <article>Python</article>
+                        <article>核心类库</article>
+                    </section>
+                </section>
+                <section>Python高级特性</section>
+                <section>
+                    <article>
+                        <span>python</span>
+                        <span>高级</span>
+                        <span class="iconfont icon-xiaoren"></span>
+                        <span>5533</span>
+                        <span>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                        </span>
+                    </article>
+                    <article>
+                        <span>2019-07-18</span>
+                        <span>已更新至主课</span>
+                        <span>限时免费</span>
+                    </article>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <span>升级</span>
+                    <img src="./img/FtS-vBsgJ8Ea_q90k1uzPI7S2lpC.jpg" />
+                    <section>
+                        <article>Python</article>
+                        <article>核心类库</article>
+                    </section>
+                </section>
+                <section>Python高级特性</section>
+                <section>
+                    <article>
+                        <span>python</span>
+                        <span>高级</span>
+                        <span class="iconfont icon-xiaoren"></span>
+                        <span>5533</span>
+                        <span>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                        </span>
+                    </article>
+                    <article>
+                        <span>2019-07-18</span>
+                        <span>已更新至主课</span>
+                        <span>限时免费</span>
+                    </article>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <span>升级</span>
+                    <img src="./img/FtS-vBsgJ8Ea_q90k1uzPI7S2lpC.jpg" />
+                    <section>
+                        <article>Python</article>
+                        <article>核心类库</article>
+                    </section>
+                </section>
+                <section>Python高级特性</section>
+                <section>
+                    <article>
+                        <span>python</span>
+                        <span>高级</span>
+                        <span class="iconfont icon-xiaoren"></span>
+                        <span>5533</span>
+                        <span>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                        </span>
+                    </article>
+                    <article>
+                        <span>2019-07-18</span>
+                        <span>已更新至主课</span>
+                        <span>限时免费</span>
+                    </article>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <span>升级</span>
+                    <img src="./img/FtS-vBsgJ8Ea_q90k1uzPI7S2lpC.jpg" />
+                    <section>
+                        <article>Python</article>
+                        <article>核心类库</article>
+                    </section>
+                </section>
+                <section>Python高级特性</section>
+                <section>
+                    <article>
+                        <span>python</span>
+                        <span>高级</span>
+                        <span class="iconfont icon-xiaoren"></span>
+                        <span>5533</span>
+                        <span>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                            <i class="iconfont icon-icon-test1"></i>
+                        </span>
+                    </article>
+                    <article>
+                        <span>2019-07-18</span>
+                        <span>已更新至主课</span>
+                        <span>限时免费</span>
+                    </article>
+                </section>
+            </section>
+        </section>
+    </section>
+    <!--分页-->
+    <section id="page">
+        <article><a href="">1</a></article>
+        <article><a href="">2</a></article>
+        <article><a href="">3</a></article>
+        <article><a href="">4</a></article>
+        <article><a href="">5</a></article>
+        <article><a href="">6</a></article>
+    </section>
+    <!--底部样式-->
+    <footer>
+        <section class="footer">
+            <section class="footer_left">
+                <img src="./img/logo8.png" alt="">
+                <p>
+                    学习猿地根据IT方向的线上学习特点，研发人机互动教学系统， 打造领先的学习模式。平台签约了十名大牛联合创办， 每个合伙人再召集几名身边的技术大咖，根据程序员的岗位需求研发精品课程，并将一门学科中所需要的全部学习资料汇总在一起， 且实时更新。选中一门课程即拥有全部的精品学习资源，不需要再找其它资源补充， 按计划学习结束后即可直接从事对应的开发工作。
+                </p>
+            </section>
+            <section class="footer_center">
+                <div>
+                    <h6>新手指南</h6>
+                    <ul>
+                        <li><a href="">挑选课程</a></li>
+                        <li><a href="">挑选课程</a></li>
+                        <li><a href="">挑选课程</a></li>
+                        <li><a href="">挑选课程</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6>新手指南</h6>
+                    <ul>
+                        <li><a href="">挑选课程</a></li>
+                        <li><a href="">挑选课程</a></li>
+                        <li><a href="">挑选课程</a></li>
+                        <li><a href="">挑选课程</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6>新手指南</h6>
+                    <ul>
+                        <li><a href="">挑选课程</a></li>
+                        <li><a href="">挑选课程</a></li>
+                        <li><a href="">挑选课程</a></li>
+                        <li><a href="">挑选课程</a></li>
+                    </ul>
+                </div>
+            </section>
+            <section class="footer_right"><img src="./img/qrcode.png" alt=""><span>学习猿地服务号</span></section>
+        </section>
+        <section class="footer_bottom">© 辽ICP备19013136号</section>
+    </footer>
+</body>
+</html>

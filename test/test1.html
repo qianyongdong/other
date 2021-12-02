@@ -1,0 +1,430 @@
+[#escape x as (x)!?html] 
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		<link type="text/css" href="_files/css/bootstrap.min.css" rel="stylesheet">
+		<link type="text/css" href="_files/css/mui.min.css" rel="stylesheet">
+		<link type="text/css" href="_files/css/swiper.min.css" rel="stylesheet">
+		<link type="text/css" href="_files/css/frozen.css" rel="stylesheet">
+		<link type="text/css" href="_files/css/cropper.css" rel="stylesheet">
+		<link type="text/css" href="_files/css/bootstrap-datetimepicker.css" rel="stylesheet">
+		<link type="text/css" href="_files/css/main.css" rel="stylesheet">
+		<link type="text/css" href="_files/css/iconfont.css" rel="stylesheet">
+		<link type="text/css" href="_files/css/htmlCss/user_info.css" rel="stylesheet">
+		<title>个人中心</title>
+	</head>
+	<script type="text/javascript">
+		document.write(unescape("%3Cscript src='${dy}/visit_log%3Furl%3D") + document.location.href + unescape("%26referrer%3D") + document.referrer + unescape("' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+
+	<body style="background-color: #efeff4;">
+		<div class="headTop">
+			<label id="goBack"><i class="iconfont iconfanhui"></i></label>
+			<span class="titleHead">个人中心</span>
+		</div>
+		<form action="" method="post" id="userImage" enctype="multipart/form-data">
+			[#if user??]
+			<input name="imgUrl" type="hidden" value="${ctx}/${user.userImage}" id="imgUrl">
+			<div class="listFiles">
+				<div class="myHead" style="margin-bottom: 0.05rem">
+					<span>个人头像</span>
+					<div class="head">
+						[#if (user.userImage)??]
+						<img src="${ctx}/${user.userImage}" class="headImg"> [#else]
+						<img src="_files/images/mrtx.png" class="headImg"> [/#if]
+						<i class="iconfont icon-iconfontjiantou6"></i>
+						<input type="file" id="uploadImg" name="file" style="display: none">
+					</div>
+				</div>
+				<div class="name">
+					<span>姓名</span>
+					<input type="text" id="name" name="xm" value="${user.realName}">
+				</div>
+				<div class="partyBranch">
+					<span>性别</span>
+					<div class="modelVal" model="sexModel">
+						<span id="sexModel" name="gender">
+            [#if user.gender?? && user.gender=='M']男[/#if]
+            [#if user.gender?? && user.gender=='F']女[/#if]
+            [#if !user.gender??]请选择[/#if]
+            </span>
+						<i class="iconfont icon-iconfontjiantou6"></i>
+					</div>
+				</div>
+				<div class="name">
+					<span>年龄</span>
+					<input type="text" id="nl" name="nn" value="${user.age}">
+				</div>
+				<div class="name" style="margin-bottom: 0.05rem">
+					<span>民族</span>
+					<input type="text" id="mz" name="mz" value="${user.minzu}">
+				</div>
+				<div class="name">
+					<span>身份证号</span>
+					<input type="text" id="sfz" name="sfz" value="${user.idcarno}">
+				</div>
+
+				<div class="name">
+					<span>入党时间</span>
+					<input type="text" id="rdsj" name="rdrq" value="${user.rdrq}">
+				</div>
+				<div class="name">
+					<span>入厂时间</span>
+					<input type="text" id="rcsj" name="rcsj" value="${user.rcsj}">
+				</div>
+				<div class="partyBranch">
+					<span>政治面貌</span>
+					<div class="modelVal" model="zzModel">
+						<span id="zzModel" name="zhengzhimianmao">请选择</span>
+						<i class="iconfont icon-iconfontjiantou6"></i>
+					</div>
+				</div>
+				<div class="name">
+					<span>最高学历</span>
+					<input type="text" id="zgxlxs" name="zuigaoxueli" value="${user.zuigaoxueli}">
+				</div>
+			</div>
+			<!--弹框-->
+			<div class="sexModel pageModel">
+				<ul>
+					<li class="mui-input-row mui-radio">
+						<label>男</label>
+						<input name="sexModel" type="radio" value="男" [#if user.gender?? && user.gender=='M' ]checked[/#if]>
+					</li>
+					<li class="mui-input-row mui-radio">
+						<label>女</label>
+						<input name="sexModel" type="radio" value="女" [#if user.gender?? && user.gender=='F' ]checked[/#if]>
+					</li>
+				</ul>
+			</div>
+			<div class="zzModel pageModel">
+				<ul>
+					<li class="mui-input-row mui-radio">
+						<label>中共党员</label>
+						<input name="zzModel" type="radio" value="中共党员" [#if user.zhengzhimianmao?? && user.zhengzhimianmao=='中共党员' ]checked[/#if]>
+					</li>
+					<li class="mui-input-row mui-radio">
+						<label>中共预备党员</label>
+						<input name="zzModel" type="radio" value="中共预备党员" [#if user.zhengzhimianmao?? && user.zhengzhimianmao=='中共预备党员' ]checked[/#if]>
+					</li>
+					<li class="mui-input-row mui-radio">
+						<label>共青团员</label>
+						<input name="zzModel" type="radio" value="共青团员" [#if user.zhengzhimianmao?? && user.zhengzhimianmao=='共青团员' ]checked[/#if]>
+					</li>
+					<li class="mui-input-row mui-radio">
+						<label>民革党员</label>
+						<input name="zzModel" type="radio" value="民革党员" [#if user.zhengzhimianmao?? && user.zhengzhimianmao=='民革党员' ]checked[/#if]>
+					</li>
+					<li class="mui-input-row mui-radio">
+						<label>民盟盟员</label>
+						<input name="zzModel" type="radio" value="民盟盟员" [#if user.zhengzhimianmao?? && user.zhengzhimianmao=='民盟盟员' ]checked[/#if]>
+					</li>
+					<li class="mui-input-row mui-radio">
+						<label>民建会员</label>
+						<input name="zzModel" type="radio" value="民建会员" [#if user.zhengzhimianmao?? && user.zhengzhimianmao=='民建会员' ]checked[/#if]>
+					</li>
+					<li class="mui-input-row mui-radio">
+						<label>民进会员</label>
+						<input name="zzModel" type="radio" value="民进会员" [#if user.zhengzhimianmao?? && user.zhengzhimianmao=='民进会员' ]checked[/#if]>
+					</li>
+					<li class="mui-input-row mui-radio">
+						<label>农工党党员</label>
+						<input name="zzModel" type="radio" value="农工党党员" [#if user.zhengzhimianmao?? && user.zhengzhimianmao=='农工党党员' ]checked[/#if]>
+					</li>
+					<li class="mui-input-row mui-radio">
+						<label>致公党党员</label>
+						<input name="zzModel" type="radio" value="致公党党员" [#if user.zhengzhimianmao?? && user.zhengzhimianmao=='致公党党员' ]checked[/#if]>
+					</li>
+					<li class="mui-input-row mui-radio">
+						<label>九三学社社员</label>
+						<input name="zzModel" type="radio" value="九三学社社员" [#if user.zhengzhimianmao?? && user.zhengzhimianmao=='九三学社社员' ]checked[/#if]>
+					</li>
+					<li class="mui-input-row mui-radio">
+						<label>台盟盟员</label>
+						<input name="zzModel" type="radio" value="台盟盟员" [#if user.zhengzhimianmao?? && user.zhengzhimianmao=='台盟盟员' ]checked[/#if]>
+					</li>
+					<li class="mui-input-row mui-radio">
+						<label>无党派人士</label>
+						<input name="zzModel" type="radio" value="无党派人士" [#if user.zhengzhimianmao?? && user.zhengzhimianmao=='无党派人士' ]checked[/#if]>
+					</li>
+					<li class="mui-input-row mui-radio">
+						<label>群众</label>
+						<input name="zzModel" type="radio" value="群众" [#if user.zhengzhimianmao?? && user.zhengzhimianmao=='群众' ]checked[/#if]>
+					</li>
+				</ul>
+			</div>
+
+			<div class="previewModel">
+				<div class="previe">
+				</div>
+				<div class="previeCon">
+					<img id="cropperImg">
+				</div>
+				<span class="previeBtn">确定</span>
+			</div>
+			<div class="btnLogin">
+				<span>确认提交</span>
+			</div>
+			[/#if]
+		</form>
+	</body>
+	<script type="text/javascript" src="_files/js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="_files/js/mui.js"></script>
+	<script type="text/javascript" src="_files/js/cropper.min.js"></script>
+	<script type="text/javascript" src="_files/js/moment-with-locales.js"></script>
+	<script type="text/javascript" src="_files/js/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript" src="_files/js/service.js"></script>
+	<script type="text/javascript" src="_files/js/util.js"></script>
+	<!--<script type="text/javascript" src="_files/js/htmlJS/user_info.js"></script>-->
+	<script type="text/javascript">
+		(function() {
+			function user_info() {
+				this.init()
+			};
+			user_info.prototype.init = function() {
+				this.cshCropper = false;
+				this.imgSrc = ''; //保存图片信息
+				this.getTimeInit();
+				this.getUserInfo(); //获取个人信息
+				this.bindEvens()
+			};
+			user_info.prototype.getUserInfo = function() {
+				var self = this;
+				var data = {
+				};
+				var result = [];
+				// Service.ajax(data,function(result){
+				result.data = self.getSHData();
+				self.dagaAJAX = result.data; //保存个人信息
+				self.getHtml(result.data)
+					// },'_files/js/data.json',false,false)
+			};
+			user_info.prototype.getHtml = function(data) {
+				var sex = ['男', '女'];
+				var political = ['中共党员', '中共预备党员', '共青团员', '民革党员', '民盟盟员', '民建会员', '民进会员', '农工党党员', '致公党党员', '九三学社社员', '台盟盟员', '无党派人士', '群众'];
+				var sexIndex = sex.indexOf(data.sex);
+				var politicalIndex = political.indexOf(data.political);
+				$('.headImg').attr('src', data.imgSrc);
+				$('#name').val(data.name);
+				$($('input[name=sexModel]')[sexIndex]).prop('checked', true);
+				$('#sexModel').text(data.sex);
+				$('#nl').val(data.age);
+				$('#mz').val(data.family);
+				$('#sfz').val(data.nameId);
+				$('#rdsj').val(data.partyTime);
+				$('#rcsj').val(data.factoryTime);
+				$($('input[name=zzModel]')[politicalIndex]).prop('checked', true);
+				$('#zzModel').text(data.political || '请选择');
+				$('#zgxlxs').val(data.education);
+			};
+			user_info.prototype.getSHData = function() {
+				var data = {
+					imgSrc: '${ctx}/${user.userImage}',
+					name: '${user.realName}',
+					sex: '${user.gender}',
+					age: '${user.age}',
+					family: '${user.minzu}',
+					nameId: '${user.idcarno}',
+					partyTime: '${user.rudangriqi?string("yyyy-MM-dd")}',
+					factoryTime: '${user.ruchangshijian?string("yyyy-MM-dd")}',
+					political: '${user.zhengzhimianmao}',
+					education: '${user.zuigaoxueli}'
+				};
+				if (data.sex == "M") {
+					data.sex = "男";
+				} else if (data.sex == "F") {
+					data.sex = "女";
+				}
+				return data;
+			};
+			user_info.prototype.getTimeInit = function() {
+				$('#rdsj').datetimepicker({
+					locale: 'zh-cn',
+					viewMode: 'days',
+					format: 'YYYY-MM-DD'
+				});
+				$('#rcsj').datetimepicker({
+					locale: 'zh-cn',
+					viewMode: 'days',
+					format: 'YYYY-MM-DD'
+				});
+			};
+			user_info.prototype.loadSize = function() {
+				var height = $('.zzModel ul').height();
+				$('.zzModel ul').css('marginTop', (window.innerHeight - height) / 2);
+				var height = $('.sexModel ul').height();
+				$('.sexModel ul').css('marginTop', (window.innerHeight - height) / 2);
+			};
+			user_info.prototype.getRoundedCanvas = function(sourceCanvas) {
+				var canvas = document.createElement('canvas');
+				var context = canvas.getContext('2d');
+				var width = sourceCanvas.width;
+				var height = sourceCanvas.height;
+				canvas.width = width;
+				canvas.height = height;
+				context.imageSmoothingEnabled = true;
+				context.drawImage(sourceCanvas, 0, 0, width, height);
+				context.globalCompositeOperation = 'destination-in';
+				context.beginPath();
+				context.arc(width / 2, height / 2, Math.min(width, height) / 2, 0, 2 * Math.PI, true);
+				context.fill();
+				return canvas;
+			};
+			user_info.prototype.DOMContentLoaded = function() {
+				var self = this;
+				var croppable = false;
+				$('#cropperImg').cropper({
+					aspectRatio: 1 / 1,
+					viewMode: 1,
+					autoCrop: true, //自动显示裁剪框
+					preview: '.previe',
+					movable: true, //是否允许可以移动后面的图片
+					cropBoxResizable: true, //是否通过拖动来调整剪裁框的大小
+					zoomable: true, //是否允许放大图像。
+					scalable: true, //是否允许缩放图像
+					minContainerWidth: 100,
+					minContainerHeight: 100,
+					rotatable: false,
+					ready: function() {
+						$('#image').cropper('setData', {
+							width: 100,
+							height: 100
+						});
+						self.croppable = true;
+						self.cshCropper = true
+					},
+				});
+			};
+			user_info.prototype.bindEvens = function() {
+				var self = this;
+				var modelVal;
+				$('.modelVal').on('click', function() {
+					modelVal = $(this);
+					var model = $(this).attr('model');
+					$('.' + model).show();
+					self.loadSize();
+				});
+				$('.pageModel ul li').on('click', function() {
+					var model = $(modelVal).attr('model');
+					var title = $("input[name='" + model + "']:checked").val();
+					modelVal.find('span').text(title);
+					$('.pageModel').hide();
+				});
+				$('.pageModel').on('click', function(e) {
+					if ($(e.target).hasClass('pageModel')) {
+						$('.pageModel').hide();
+					}
+				});
+				$('.headImg').on('click', function() {
+					$('#uploadImg').click();
+				});
+				$('#uploadImg').on('change', function(e) {
+					var fileInfo = this.files[0];
+					if (fileInfo.type.indexOf('image') == -1) {
+						util.model('请选择图片');
+						return;
+					}
+					var url = (window.webkitURL ? webkitURL : window.URL).createObjectURL(fileInfo);
+					console.log(url);
+					if (self.cshCropper) {
+						$('#cropperImg').cropper('replace', url);
+					} else {
+						$('#cropperImg').attr('src', url);
+					}
+				});
+				$('#cropperImg').on('load', function() {
+					$('.previewModel').show();
+					$('#cropperImg').css({
+						width: $(this).width(),
+						height: $(this).height()
+					});
+					self.DOMContentLoaded();
+				});
+				$('.previeBtn').on('tap', function() {
+					util.model('是否保存裁剪图片', function() {
+						util.loading(true);
+						var croppedCanvas;
+						var roundedCanvas;
+						var roundedImage;
+						if (!self.croppable) {
+							return;
+						}
+						// Crop
+						croppedCanvas = $('#cropperImg').cropper('getCroppedCanvas');
+						// Round
+						roundedCanvas = self.getRoundedCanvas(croppedCanvas);
+						// Show
+						roundedImage = document.createElement('img');
+						roundedImage.src = roundedCanvas.toDataURL();
+						$('.headImg').attr('src', roundedImage.src);
+						util.loading(false);
+						$('.previewModel').hide();
+						//图片信息
+						self.imgSrc = roundedImage.src;
+						console.log(roundedImage.src);
+						$('#imgUrl').val(roundedImage.src)
+					}, 1)
+				});
+				$('.btnLogin').on('click', function() {
+					var isXG = false; //默认没有修改
+					var dataHtml = {
+						imgSrc: $('#uploadImg').attr('src'),
+						name: $('#name').val(),
+						sex: $('#sexModel').text(),
+						age: $('#nl').val(),
+						family: $('#mz').val(),
+						nameId: $('#sfz').val(),
+						partyTime: $('#rdsj').val(),
+						factoryTime: $('#rcsj').val(),
+						political: $('#zzModel').text(),
+						education: $('#zgxlxs').val()
+					};
+					if (JSON.stringify(dataHtml) != JSON.stringify(self.dagaAJAX)) {
+						isXG = true
+					};
+					if (isXG) {
+						util.model("是否保存修改？", function() {
+							//保存 ajax
+							var formData = new FormData($('#userImage')[0]);
+							$.ajax({
+								url: '${ctx}/appsubUser',
+								cache: false,
+								type: "post",
+								// contentType: "application/json; charset=utf-8",
+								processData: false, // 告诉jQuery不要去处理发送的数据
+								contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+								//传送请求数据
+								data: formData,
+								success: function(data) {
+									if (data === 'login') {
+										alert("请登录后再操作！谢谢");
+										util.model('请登录后再操作！谢谢', function() {
+											window.location.href = '${ctx}/login.do';
+										});
+									} else {
+										util.model('修改成功！', function() {
+											window.location.href = "/node/425";
+										});
+									}
+								}
+							})
+						}, true)
+					} else {
+						window.location.href = "/node/371";
+					}
+				})
+			};
+			window.user_info = new user_info()
+		})();
+	</script>
+
+</html>
+[/#escape] 

@@ -1,0 +1,178 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-05-17 13:11:06
+ * @LastEditTime: 2021-05-20 11:34:56
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \学习猿地_CSS_09_栅格系统布局源码\high.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // (function(){
+    //     var a=1;
+    //     function test() {
+    //         console.log(++a)
+    //       }
+    //       window.$=function(){
+    //         return{
+    //             test:test
+    //         }  
+    //       }
+    // })()
+    // $().test();
+    // function Person(color) {  
+    //     console.log(this)
+    //     this.color=color;
+    // }
+    // Person("red");
+    // var p=new Person("yellow")
+    // console.log(p.color)
+    // 'use strict';
+    // Object.prototype.n="Object";
+    //     function Ab() {  }//构造函数有prototype，__proto__指向obejct.prototype
+    // // Ab.prototype.n="Ab()"
+    // // ab=new Ab();//实例ab没有prototype,__proto__指向Ab构造函数的prototype
+    //     var ac=new Ab();
+    // // // console.log(ac)
+    // // // Function.prototype.n="Fu"
+    // // // Function.__proto__.n="Fu_"
+    //     Function.prototype.ad=function(){
+    //         console.log("ad")
+    //     }
+    //     console.log(Ab.ad instanceof Function)
+    //     console.log(Ab.__proto__== Function.prototype)
+    // fn.ac.call(Object)
+    // var fn=function(){
+    //     console.log("fn")
+    // }
+    // var fn =new Object();
+    // Object.ac();
+    // Ab.ac();
+    // console.log(ab instanceof Object)
+    // Object.ac();
+    // console.log(Function.prototype.n,Function.__proto__.n)
+    // // ob1.test();
+    // // ob1.__proto__.test=function(){console.log(2)}
+    // // ob1.test();
+    // console.log(Object.__proto__==Function.prototype)
+    // console.log(Object.__proto__==Object.prototype)
+    // console.log(Function.__proto__==Function.prototype)
+    // console.log(Object instanceof Function)
+    // console.log(Function instanceof Object)
+    // var a=3;
+    // function fn() {
+    //     console.log(a)
+    //     var a=4
+    //   }
+    //   fn()
+    //   console.log(b);
+    //   var b=4;
+    //   var array=[];
+    //   console.log(array.__proto__,Array.prototype)
+    // var F=function(){};
+    // function F(){
+        
+    // }
+    // var f=new F();
+    // Object.prototype.a=function(){
+    //     console.log("a")
+    // }
+    // Function.prototype.b=function(){
+    //     console.log("b")
+    // }
+    // f.a()//a
+    // f.b()//undefined
+    // F.a()//a
+    // F.b()//b
+    // var array =new Array(20);
+    // var object =new Object();
+
+    // console.log(object)
+    // function fn(){
+    //      a=3
+    //     console.log(a)
+    // }
+    // var a=fn()
+    // a=null
+    // function fun(n,o){
+    //     console.log(o)
+    //     return {
+    //         fun:function(m){
+    //             return fun(m,n)
+    //         }
+    //     }
+    // }
+    // var a=fun(0);a.fun(1);a.fun(2);a.fun(3)
+    // var b=fun(0).fun(1).fun(2).fun(3)
+    // var c=fun(0).fun(1);c.fun(2);c.fun(3)
+//     function Fn(name){
+//         this.name=name;
+//     }
+//     Fn.prototype.setPrice=function(price){
+//         this.price=price;
+//     }
+//     function Fnn(name) { 
+//         this.name=name;
+//         Fn.call(this,"张三");
+        
+//      }
+     
+//     //  Fnn.prototype=new Fn();
+//     //  Fnn.prototype.constructor=Fnn;
+//      var n1=new Fn("张三")
+//      var n2=new Fnn("张四")
+//      n1.setPrice.call(n2,2000)
+//      console.log(n1,n2)
+        // function f(n) {
+        //     return n<=2?1:f(n-1)+f(n-2)
+        //   }
+        // var a=f(7);
+        // console.log(a)
+//             function fun(n, o) {
+//                 console.log(o) //
+//                 return {
+//                     fun: function (m) { 
+//                         return fun(m, n)
+//                     }
+//                 }
+//             }
+// var a = fun(0)//console输出一个undefined ;a= function (m) { return fun(m, n)}
+// a.fun(1)
+/*
+ fun(1, n)
+*/
+window.onload=function(){
+    var input1=document.createElement("input")
+    input1.setAttribute("id","number")
+    var input2=document.createElement("input")
+    input2.setAttribute("type","button")
+    input2.setAttribute("value","查询")
+    var body=document.getElementsByTagName("body")[0]
+    body.appendChild(input1)
+    body.appendChild(input2)
+
+    input2.onclick=function(){
+        console.log("发送"+input1.value)
+        worker.postMessage(input1.value)
+    }
+
+    var worker=new Worker("worker.js");
+    worker.onmessage=function(event){
+        console.log(event,this)
+        console.log("接收"+event.data)
+        alert(event.data)
+    }
+
+}
+ </script>
+<body>
+ 
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-05-12 14:11:10
+ * @LastEditTime: 2021-05-12 17:23:23
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \学习猿地_CSS_09_栅格系统布局源码\snake.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    #box {
+        width: 800px;
+        height: 800px;
+        background-color: rgba(255, 187, 170, 0.404);
+        border: 3px solid black;
+        margin: 20px auto;
+        position: relative;
+    }
+
+    #snack {
+        width: 120px;
+        height: 60px;
+        background-color: #bfa;
+        position: absolute;
+    }
+</style>
+<script type="text/javascript" src="fz.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        document.onkeydown = function (event) {
+            var snack=document.getElementById("snack");
+            move(event,snack)
+        }
+        /**
+            * @description: 获取方向函数
+            * @param {*} e：event
+            * @return {*}ot：方向  
+            */
+            var timer;
+        function move(e,obj) {
+            timer&&clearInterval(timer)
+            switch (e.keyCode) {
+                
+                case 37:
+                    // alert("左")
+                    
+                    timer=setInterval(function(){
+                        var oldVal=parseInt(getStyle(obj,"left"));
+                        var newVal=oldVal-10;
+                        obj.style.left=newVal+"px";
+                        if(newVal==680||newVal==0){
+                            clearInterval(timer)
+                        }
+                    },300)
+                   
+                    break;
+                case 38:
+                    timer=setInterval(function(){
+                        var oldVal=parseInt(getStyle(obj,"top"));
+                        var newVal=oldVal-10;
+                        obj.style.top=newVal+"px";
+                        if(newVal==740||newVal==0){
+                            clearInterval(timer)
+                        }
+                    },300)
+                    // alert("上")
+                    break;
+                case 39:
+                    timer=setInterval(function(){
+                        var oldVal=parseInt(getStyle(obj,"left"));
+                        var newVal=oldVal+10;
+                        obj.style.left=newVal+"px";
+                        if(newVal==680||newVal==0){
+                            clearInterval(timer)
+                        }
+                    },300)
+                    // alert("右")
+                    break;
+                case 40:
+                    timer=setInterval(function(){
+                        var oldVal=parseInt(getStyle(obj,"top"));
+                        var newVal=oldVal+10;
+                        obj.style.top=newVal+"px";
+                        if(newVal==740||newVal==0){
+                            clearInterval(timer)
+                        }
+                    },300)
+                    // alert("下")
+                    break;
+              }
+        
+
+    }
+
+        /**
+         * @description: 创建定时器函数
+         * @param {*}callback:方法
+         * @return {*}
+         */
+        function createTimer(obj,ot,speed) {
+            var oldVal=parseInt(getStyle(obj,ot));
+            var timer;
+            switch(ot){
+                case "left": timer=obj.style.left=oldLeft-10+"px";
+            }
+            var timer=setInterval(function(){
+                obj.style.left=oldLeft-10+"px"
+            },speed)
+        }
+
+
+    }
+</script>
+
+<body>
+    <div id="box">
+        <div id="snack"></div>
+        <div id="bean"></div>
+    </div>
+</body>
+
+</html>

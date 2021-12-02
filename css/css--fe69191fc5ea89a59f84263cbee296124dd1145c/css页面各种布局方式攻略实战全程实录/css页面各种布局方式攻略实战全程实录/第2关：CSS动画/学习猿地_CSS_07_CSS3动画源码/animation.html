@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画属性</title>
+    <style>
+        body{
+            padding: 0px;
+            margin:0px;
+        }
+        #banner{
+            width: 2100px;
+            border:1px solid blue;
+            height:400px;
+            overflow: hidden;
+        }
+        #box{
+            border: 5px solid #000;
+            width:8400px;
+            height: 400px;
+            /*加入动画*/
+            /*
+                动画名字
+                动画完成时间
+                动画执行次数  infinite 无限次
+                动画延时执行时间
+                (
+                    动画执行函数  过渡是一样的
+
+                )
+            */
+            animation:myname 10s infinite 1s ;
+        }
+        #box>img{
+            float:left;
+        }
+        #box:hover{
+            /*动画暂停属性*/
+            animation-play-state: paused;
+        }
+        @keyframes myname {
+            35%{
+                margin-left:-2100px;
+            }
+            70%{
+                margin-left: -4200px;
+            }
+            100%{
+                margin-left: -6300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <div id="box">
+            <img src="./img/79fcbe74418c46bd92e2f70b0fb6ae1a.jpg" alt="">
+            <img src="./img/adb8e75c166b46a982c719a5c37c462c.jpg" alt="">
+            <img src="./img/e555f947d2d84a809aabfd8ea55948c7.jpg" alt="">
+            <img src="./img/e5359b073d1e4044a43dee0deba10ed8.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>

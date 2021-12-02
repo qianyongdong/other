@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>圆角边框</title>
+    <style>
+        #box1{
+            width: 200px;
+            height:200px;
+            border:1px solid blue;
+            /*设置圆角 完整格式  2个参数 8个值*/
+            /*border-radius: 10px 20px 30px 40px / 10px 20px 30px 40px;*/
+            /*关于圆角的形成*/
+            /*
+            1.从指定角的顶端，向内部引出垂直半径和水平半径
+            2.将水平半径和垂直半径相较于元素内部的一点(圆心点)
+            3.以该点为圆心，指定的垂直半径和水平半径画圆或椭圆
+            4.与边框相交的部分就是圆角部分。
+            */
+            /*设置圆角 完整格式  1个参数 4个值*/
+            /*border-radius: 10px 20px 30px 40px;*/
+            /*一个参数两个值 20px 代表左上角和右下角的水平和垂直 60px代表右上角和左下角的水平和垂直*/
+            /*border-radius:20px 60px;*/
+            /*一个参数 一个值  四个角的水平和垂直*/
+            /*border-radius: 10px;*/
+            /*border-radius:10px / 20px 10px;*/
+            /*border-radius:10px 20px 30px 40px / 20px 10px;*/
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+</body>
+</html>

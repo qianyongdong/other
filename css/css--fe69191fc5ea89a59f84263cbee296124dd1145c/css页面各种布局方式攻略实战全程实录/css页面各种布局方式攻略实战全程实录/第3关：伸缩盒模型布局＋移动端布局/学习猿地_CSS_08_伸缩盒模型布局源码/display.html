@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box1{
+            width:100%;
+            min-width:960px;
+            /*height:80px;*/
+            border:1px solid blue;
+            display: flex;
+            /*flex-direction 设置子容器垂直布局   取值 column 列(垂直布局效果)*/
+            flex-direction: column;
+            /*justify-content: center;*/
+            /*justify-content: space-between;*/
+            /*水平对齐方式*/
+            justify-content: space-around;
+            /*垂直对齐方式*/
+            align-items:center;
+            /*折行*/
+            /*flex-wrap: wrap;*/
+        }
+        #box1>div{
+            /*width: 35%;*/
+            height:60px;
+            border:1px solid green;
+        }
+        #box1>div:first-child{
+            flex-grow: 1;
+        }
+        #box1>div:nth-child(2){
+            flex-grow: 5;
+        }
+        #box1>div:last-child{
+            flex-grow: 2;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-06-24 09:51:59
+ * @LastEditTime: 2021-06-24 10:06:31
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \yodn\demo1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.1.1/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        template:`
+            <website />
+            <describe />
+            <count />
+            <count />
+            <count />
+        `
+    })
+    app.component('website',{
+        template:` <h2>jspang.com</h2>`
+    })
+    app.component('describe',{
+        template:`<div>技术胖的博客</div>`
+    })
+    app.component('count',{
+        data(){
+            return{
+                count:0
+            }
+        },
+        template:`
+                {{count}}
+                <button @click='count++'>增加</button>
+        `
+    })
+    //全局组件只要定义 处处可以使用 性能不高 使用方便
+    const vm=app.mount("#app")
+</script>
+</html>

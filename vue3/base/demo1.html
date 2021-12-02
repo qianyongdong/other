@@ -1,0 +1,58 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-06-22 16:07:56
+ * @LastEditTime: 2021-06-22 16:22:45
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \yodn\demo1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo1</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<style>
+    body{
+        background-color:black;
+        color:white;
+    }
+</style>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                content:'1',
+                setMeal:'showhide',
+                isShowMeal:false
+            }
+        },
+        methods: {
+            welcomeBtnClick(){
+                this.content="welcomeBtnClick"
+            },
+            byeBtnClick(){
+                this.content="byeBtnClick"
+            },
+            showOrHideBtnClick(){
+                this.isShowMeal=!this.isShowMeal
+            }
+        },
+        template:`<div>
+                     <div>{{content}}</div>
+                     <button v-on:click="welcomeBtnClick">有顾客来</button>&nbsp;
+                     <button v-on:click="byeBtnClick">顾客离开</button>
+                     <div>
+                        <div v-if="isShowMeal">{{setMeal}}</div>
+                        <button v-on:click="showOrHideBtnClick">隐藏显示</button>
+                     </div>
+                 </div>`
+    }).mount('#app')
+</script>
+</html>

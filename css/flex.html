@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex</title>
+</head>
+<style>
+#box{
+    display: flex;
+    flex-wrap: wrap;
+}
+.item{
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 125px;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    box-sizing:border-box;
+    justify-content: center;
+}
+.item>img{
+    width: 45px;
+}
+.item>p{
+    color: #000;
+    opacity: .8;
+}
+.item:nth-child(3n+1){
+    /* background-color: red; */
+    border-left: none;
+}
+</style>
+<body>
+    <div id="box">
+        <div class="item">
+            <img src="./java.jpg" alt="">
+            <p>美食</p>
+        </div>
+        <div class="item">
+            <img src="./java.jpg" alt="">
+            <p>美食</p>
+        </div>
+        <div class="item">
+            <img src="./java.jpg" alt="">
+            <p>美食</p>
+        </div>
+        <div class="item">
+            <img src="./java.jpg" alt="">
+            <p>美食</p>
+        </div>
+        <div class="item">
+            <img src="./java.jpg" alt="">
+            <p>美食</p>
+        </div>
+        <div class="item">
+            <img src="./java.jpg" alt="">
+            <p>美食</p>
+        </div>
+    </div>
+</body>
+<script>
+    
+    new Promise((resolve,reject)=>{
+        console.log(2)
+        reject(1)
+        }).then(res=>console.log(1)).catch(res=>console.log(res))
+</script>
+</html>

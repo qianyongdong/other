@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .inner {
+            width: 100px;
+            overflow: hidden;
+            background: blue;
+        } */
+
+        /* .inner::after {
+            content: "";
+            margin-top: 100%;
+            display: block;
+        } */
+        .outer { width: 400px; height: 600px; /* background: blue; */ border: 1px solid red; background-color: transparent; display: table-cell; vertical-align: middle; }
+        .inner { background: red; width: 200px; height: 300px; border: 1px solid blue; margin: 0 auto; }
+    </style>
+</head>
+
+<body>
+    <input type="color" name="" id="color" onchange="cs()">
+    <aside>
+        <ul>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+        </ul>
+    </aside>
+    <article>11</article>
+    <time>2011-1</time>
+    <div class="outer"> <div class="inner"></div> </div>
+</body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    // const cs = () => {
+    //     console.log($('#color').val())
+        
+    // }
+    // class ab{
+    //     constructor(params) {
+            
+    //     }
+    // }
+    // console.log(Array.from(new Set([1, 1, 2, 2])))
+    var minWindow = function(s, t) {
+    console.log(111)
+    let left=right=0;
+    let sl=s.length,tl=t.length;
+    let minl,min;
+    console.log(111)
+    // while(left<sl){
+    //     right=left
+    //     let count=0
+    //     while(right<sl){
+    //         if(s[right]==t[count]) count++
+    //         if(count==tl) break
+    //         right++
+    //     }
+    //     if(count==tl){
+    //         if(!min){
+    //             minl=left
+    //             min=right-left
+    //         }else if(right-left<min){
+    //             minl=left
+    //             min=right-left
+    //         }
+    //     }
+    //     right++
+    // }
+    console.log(111,minl,min)
+    return min?s.slice(minl,min):''
+};
+console.log(minWindow("aaabdabcefaecbef","abc"))
+</script>
+
+</html>

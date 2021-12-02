@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>box-shadow</title>
+    <style>
+        #box1{
+            width:100px;
+            height:100px;
+            background: orange;
+            /*box-shadow:-5px -5px 5px red;*/
+            /*box-shadow:0px 0px 3px 20px red;*/
+            /*box-shadow:10px 10px 5px inset #ccc;*/
+        }
+        #box2{
+            width:100px;
+            height:40px;
+            background: green;
+            margin: 50px auto;
+            line-height:40px;
+            color:#fff;
+            font-weight:bold;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow:5px 5px 3px #000;
+        }
+        #box2:hover{
+            box-shadow: 5px 5px 3px #000 inset ;
+        }
+        #box3{
+
+            width:200px;
+            height:200px;
+            margin: 10px auto;
+            border-radius: 100px;
+            border:1px solid red;
+            box-shadow:0px 0px 5px 5px red,0px 0px 5px 10px orange,0px 0px 5px 15px yellow,0px 0px 5px 20px green;
+        }
+        /*
+            盒子阴影
+            格式：box-shadow：阴影1,阴影2……；
+            阴影的格式：
+                水平偏移位置，垂直偏移位置，模糊度，外颜值，颜色，(内置阴影)
+        */
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2">按钮</div>
+    <div id="box3"></div>
+</body>
+</html>
